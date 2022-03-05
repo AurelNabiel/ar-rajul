@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "703582047411",
+    "project_id": "ar-rajul",
+    "storage_bucket": "ar-rajul.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703582047411:android:4981b85c1a02c55b3774c6",
+        "android_client_info": {
+          "package_name": "com.example.ar_rajul"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703582047411-kgbc333nd5ilchld6pmmj415nt8qu5q5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ar_rajul",
+            "certificate_hash": "add9ba188a36b3e7a927751deb739ed038d46796"
+          }
+        },
+        {
+          "client_id": "703582047411-d74l4lhb3m9qi3l7udlde38jnjsdf4ha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC14xhJvrLDW-wA5AHwqWj2sUkJgLTt-5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703582047411-d74l4lhb3m9qi3l7udlde38jnjsdf4ha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
