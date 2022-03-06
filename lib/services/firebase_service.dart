@@ -1,7 +1,5 @@
 // ignore_for_file: camel_case_types
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -82,6 +80,63 @@ class Firebase_service {
             onPressed: () => Navigator.pop(
               context,
             ),
+            width: 120,
+          )
+        ],
+      ).show();
+    } catch (e) {
+      Alert(
+        context: context,
+        type: AlertType.error,
+        title: "Something Wrong",
+        desc: "Their is something Wrong $e",
+        buttons: [
+          DialogButton(
+            child: const Text(
+              "OK",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+  }
+
+  Stream<QuerySnapshot<Object?>> streamData() {
+    CollectionReference gamis = firestore.collection("gamis");
+    return gamis.snapshots();
+  }
+
+  void UpdateProduct(String docId, String namaGamis, int harga, String gambar,
+      String promo, String ukuran, String warna, context) async {
+    DocumentReference gamis = firestore.collection("gamis").doc(docId);
+    int count = 0;
+
+    try {
+      await gamis.update({
+        "nama": namaGamis,
+        "harga": harga,
+        "foto": gambar,
+        "promo": promo,
+        "size": ukuran,
+        "color": warna
+      });
+      Alert(
+        context: context,
+        type: AlertType.success,
+        title: "Success",
+        desc: "congratulations your data Product have been Updated",
+        buttons: [
+          DialogButton(
+            child: const Text(
+              "OK",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.popUntil(context, (route) {
+              return count++ == 2;
+            }),
             width: 120,
           )
         ],
