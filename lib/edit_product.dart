@@ -1,7 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, unused_import
-
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 
@@ -24,6 +21,10 @@ class _EditPageState extends State<EditPage> {
   void initState() {
     namaGamis.text = widget.data['nama'];
     harga.text = widget.data['harga'].toString();
+    gambar.text = widget.data['gambar'];
+    ukuran.text = widget.data['ukuran'];
+    warna.text = widget.data['warna'];
+    promo.text = widget.data['promo'];
     super.initState();
   }
 
