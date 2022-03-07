@@ -3,7 +3,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:latihan_firebase/services/firebase_service.dart';
+import 'package:ar_rajul/services/firebase_service.dart';
 
 class EditPage extends StatefulWidget {
   final Map data;
@@ -13,12 +13,17 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
-  TextEditingController productName = TextEditingController();
-  TextEditingController productPrice = TextEditingController();
+  TextEditingController namaGamis = TextEditingController();
+  TextEditingController harga = TextEditingController();
+  TextEditingController gambar = TextEditingController();
+  TextEditingController promo = TextEditingController();
+  TextEditingController ukuran = TextEditingController();
+  TextEditingController warna = TextEditingController();
+
   @override
   void initState() {
-    productName.text = widget.data['nama'];
-    productPrice.text = widget.data['harga'].toString();
+    namaGamis.text = widget.data['nama'];
+    harga.text = widget.data['harga'].toString();
     super.initState();
   }
 
@@ -39,7 +44,7 @@ class _EditPageState extends State<EditPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, productName, productPrice),
+                _form(context, namaGamis, harga, warna, ukuran, promo, gambar),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
@@ -48,8 +53,12 @@ class _EditPageState extends State<EditPage> {
                     onPressed: () {
                       Firebase_service().UpdateProduct(
                           widget.docId,
-                          productName.text,
-                          int.parse(productPrice.text),
+                          namaGamis.text,
+                          int.parse(harga.text),
+                          gambar.text,
+                          promo.text,
+                          ukuran.text,
+                          warna.text,
                           context);
                     },
                     child: Text(
@@ -71,15 +80,32 @@ class _EditPageState extends State<EditPage> {
   }
 }
 
-Widget _form(BuildContext context, productName, productPrice) {
+Widget _form(
+    BuildContext context, namaGamis, harga, gambar, ukuran, warna, promo) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _field(context, "Nama Product", productName),
+      _field(context, "Foto", gambar),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
-      _field(context, "Harga", productPrice),
+      _field(context, "Nama Gamis", namaGamis),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Harga", harga),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Promo", promo),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Size", ukuran),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Color", warna),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
