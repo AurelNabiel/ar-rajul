@@ -7,11 +7,16 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Firebase_service {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  Future<QuerySnapshot<Object?>> getData() async {
+    CollectionReference gamis = firestore.collection("gamis");
+    return await gamis.get();
+  }
 
   void addProduct(String namaGamis, int harga, String gambar, String promo,
       String ukuran, String warna, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
+    
 
     try {
       await gamis.add({

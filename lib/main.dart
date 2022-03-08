@@ -1,11 +1,17 @@
+import 'dart:html';
+
+import 'package:ar_rajul/pages/user.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-import 'edit_product.dart';
+import 'pages/edit_product.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -45,98 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dashboard"),
-      ),
-      // body: FutureBuilder<QuerySnapshot<Object?>>(
-      //     future: Firebase_service().getData(),
-      //     builder: (context, snapshot) {
-      //       if (snapshot.connectionState == ConnectionState.done) {
-      //         var listAllData = snapshot.data!.docs;
-      //         return ListView.builder(
-      //             itemCount: listAllData.length,
-      //             itemBuilder: (context, index) {
-      //               Map<String, dynamic> data =
-      //                   listAllData[index].data()! as Map<String, dynamic>;
-      //               return ListTile(
-      //                 title: Text(data["nama"].toString()),
-      //                 subtitle: Text(data['harga'].toString()),
-      //               );
-      //             });
-      //       }
-      //       return Center(
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     }),
-      body: StreamBuilder<QuerySnapshot<Object?>>(
-          stream: Firebase_service().streamData(),
-          builder: (context, snapshot) {
-            print(snapshot.connectionState);
-            if (snapshot.connectionState == ConnectionState.active) {
-              var listAllData = snapshot.data!.docs;
-              return ListView.builder(
-                  itemCount: listAllData.length,
-                  itemBuilder: (context, index) {
-                    Map<String, dynamic> data =
-                        listAllData[index].data()! as Map<String, dynamic>;
-                    return ListTile(
-                      title: Text(data["nama"].toString()),
-                      subtitle: Text(data['harga'].toString()),
-                      trailing: IconButton(
-                        onPressed: () {
-                          Alert(
-                            context: context,
-                            type: AlertType.info,
-                            title: "Delete Product",
-                            desc: "do you really want to delete this Products?",
-                            buttons: [
-                              DialogButton(
-                                child: const Text(
-                                  "Nope",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                onPressed: () => Navigator.pop(context),
-                                width: 120,
-                                color: Colors.red,
-                              ),
-                              DialogButton(
-                                child: const Text(
-                                  "Yup",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  Firebase_service().DeleteProduct(
-                                      listAllData[index].id, context);
-                                },
-                                width: 120,
-                                color: Colors.blue,
-                              )
-                            ],
-                          ).show();
-                          ;
-                        },
-                        icon: Icon(Icons.delete),
-                      ),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => EditPage(
-                                data: data, docId: listAllData[index].id)));
-                      },
-                    );
-                  });
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/add');
-        },
-        child: Icon(Icons.add),
+      body: Container(
+        child: Image.asset("adminUser.png"),
       ),
     );
   }
