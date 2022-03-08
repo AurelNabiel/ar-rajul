@@ -1,4 +1,4 @@
-import 'dart:html';
+// ignore: avoid_web_libraries_in_flutter, unused_import
 
 import 'package:ar_rajul/pages/user.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const User(),
     );
   }
 }
@@ -52,7 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Image.asset("adminUser.png"),
+
+        // child: Image.asset("adminUser.png"),
       ),
     );
   }

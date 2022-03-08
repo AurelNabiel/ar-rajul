@@ -27,7 +27,7 @@ class User extends StatelessWidget {
                     );
                   });
             }
-            return const (
+            return Container(
               // ignore: unnecessary_const
               child: const CircularProgressIndicator(),
             );
