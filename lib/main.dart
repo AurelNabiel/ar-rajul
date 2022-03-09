@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const User(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -72,7 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 130,
                     
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin()));
+                      },
                       child: Text("Admin",style: TextStyle(fontSize: 20),),
                       
                       style: ElevatedButton.styleFrom(
@@ -91,7 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 130,
                     
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>User()));
+                      },
                       child: Text("User",style: TextStyle(fontSize: 20),),
                       
                       style: ElevatedButton.styleFrom(

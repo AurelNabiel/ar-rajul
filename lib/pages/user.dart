@@ -28,6 +28,7 @@ class User extends StatelessWidget {
                   });
             }
             return Container(
+              alignment: Alignment.center,
               // ignore: unnecessary_const
               child: const CircularProgressIndicator(),
             );
