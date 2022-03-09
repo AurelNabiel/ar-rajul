@@ -70,13 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),
                     width: 130,
-                    
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Admin()));
                       },
-                      child: Text("Admin",style: TextStyle(fontSize: 20),),
-                      
+                      child: Text(
+                        "Admin",
+                        style: TextStyle(fontSize: 20),
+                      ),
                       style: ElevatedButton.styleFrom(
                           primary: daws2,
                           padding: EdgeInsets.symmetric(
@@ -87,17 +89,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   const SizedBox(
                     width: 35,
                   ),
-                  Container(decoration: BoxDecoration(),
+                  Container(
+                    decoration: BoxDecoration(),
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),
                     width: 130,
-                    
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>User()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => User()));
                       },
-                      child: Text("User",style: TextStyle(fontSize: 20),),
-                      
+                      child: Text(
+                        "User",
+                        style: TextStyle(fontSize: 20),
+                      ),
                       style: ElevatedButton.styleFrom(
                           primary: daws2,
                           padding: EdgeInsets.symmetric(

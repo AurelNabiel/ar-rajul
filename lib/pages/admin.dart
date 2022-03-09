@@ -28,7 +28,7 @@ class Admin extends StatelessWidget {
                         listAllData[index].data()! as Map<String, dynamic>;
                     return ListTile(
                       leading: Image.network(data["gambar"].toString()),
-                      title: Text(data["nama"].toString()),
+                      title: Text(data["namaGamis"].toString()),
                       subtitle: Text(data['harga'].toString()),
                       trailing: IconButton(
                         onPressed: () {
