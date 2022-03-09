@@ -53,30 +53,58 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+            alignment: Alignment.bottomCenter,
             constraints: const BoxConstraints.expand(),
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
                         'https://firebasestorage.googleapis.com/v0/b/ar-rajul.appspot.com/o/adminUser.png?alt=media&token=6f9b36f1-e634-4dec-89ae-de4e4f436e90'),
                     fit: BoxFit.cover)),
-            child: Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const DecoratedBox(decoration: BoxDecoration()),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(daws2),
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height / 10),
+                    width: 130,
+                    
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Admin",style: TextStyle(fontSize: 20),),
+                      
+                      style: ElevatedButton.styleFrom(
+                          primary: daws2,
+                          padding: EdgeInsets.symmetric(
+                              vertical:
+                                  MediaQuery.of(context).size.height / 50)),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 20,),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const DecoratedBox(decoration: BoxDecoration()),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(daws2),
+                  const SizedBox(
+                    width: 35,
                   ),
-                ),
-              ],
+                  Container(decoration: BoxDecoration(),
+                    margin: EdgeInsets.symmetric(
+                        vertical: MediaQuery.of(context).size.height / 10),
+                    width: 130,
+                    
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("User",style: TextStyle(fontSize: 20),),
+                      
+                      style: ElevatedButton.styleFrom(
+                          primary: daws2,
+                          padding: EdgeInsets.symmetric(
+                              vertical:
+                                  MediaQuery.of(context).size.height / 50)),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 300,
+                  )
+                ],
+              ),
             )));
   }
 }
