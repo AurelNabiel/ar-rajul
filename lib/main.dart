@@ -1,5 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter, unused_import
 
+import 'package:ar_rajul/pages/admin.dart';
 import 'package:ar_rajul/pages/user.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const User(),
     );
   }
 }
@@ -68,7 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     backgroundColor: MaterialStateProperty.all<Color>(daws2),
                   ),
                 ),
-                const SizedBox(width: 20,),
+                const SizedBox(
+                  width: 20,
+                ),
                 ElevatedButton(
                   onPressed: () {},
                   child: const DecoratedBox(decoration: BoxDecoration()),

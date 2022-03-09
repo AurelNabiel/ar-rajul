@@ -1,15 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 
-class EditPage extends StatefulWidget {
-  final Map data;
-  final String docId;
-  const EditPage({required this.data, required this.docId});
-  State<EditPage> createState() => _EditPageState();
+class AddPage extends StatefulWidget {
+  const AddPage({Key? key}) : super(key: key);
+
+  @override
+  State<AddPage> createState() => _AddPageState();
 }
 
-class _EditPageState extends State<EditPage> {
+class _AddPageState extends State<AddPage> {
   TextEditingController namaGamis = TextEditingController();
   TextEditingController harga = TextEditingController();
   TextEditingController gambar = TextEditingController();
@@ -18,22 +19,11 @@ class _EditPageState extends State<EditPage> {
   TextEditingController warna = TextEditingController();
 
   @override
-  void initState() {
-    gambar.text = widget.data['gambar'];
-    namaGamis.text = widget.data['namaGamis'];
-    harga.text = widget.data['harga'].toString();
-    ukuran.text = widget.data['ukuran'];
-    warna.text = widget.data['warna'];
-    promo.text = widget.data['promo'];
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final lebar = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Update Product"),
+        title: const Text("Add Product"),
       ),
       body: SafeArea(
           child: Padding(
@@ -45,15 +35,14 @@ class _EditPageState extends State<EditPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, namaGamis, harga, warna, ukuran, promo, gambar),
+                _form(context, namaGamis, harga, ukuran, warna, promo, gambar),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () {
-                      Firebase_service().UpdateProduct(
-                          widget.docId,
+                      Firebase_service().addProduct(
                           namaGamis.text,
                           int.parse(harga.text),
                           gambar.text,
@@ -63,7 +52,7 @@ class _EditPageState extends State<EditPage> {
                           context);
                     },
                     child: Text(
-                      "Update",
+                      "Send",
                       style: TextStyle(fontSize: lebar >= 800 ? 30 : 30),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -82,11 +71,11 @@ class _EditPageState extends State<EditPage> {
 }
 
 Widget _form(
-    BuildContext context, namaGamis, harga, gambar, ukuran, warna, promo) {
+    BuildContext context, namaGamis, harga, ukuran, warna, promo, gambar) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _field(context, "Foto", gambar),
+      _field(context, "gambar Gamis", gambar),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
@@ -98,15 +87,15 @@ Widget _form(
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
-      _field(context, "Promo", promo),
-      SizedBox(
-        height: MediaQuery.of(context).size.height / 40,
-      ),
       _field(context, "Size", ukuran),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
       _field(context, "Color", warna),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Promo", promo),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
