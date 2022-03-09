@@ -1,3 +1,4 @@
+import 'package:ar_rajul/pages/add_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -6,15 +7,14 @@ import '../services/firebase_service.dart';
 import 'edit_product.dart';
 
 class Admin extends StatelessWidget {
-  const Admin({ Key? key }) : super(key: key);
+  const Admin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dashboard"),
+        title: const Text("Ar-Rajul"),
       ),
-     
       body: StreamBuilder<QuerySnapshot<Object?>>(
           stream: Firebase_service().streamData(),
           builder: (context, snapshot) {
@@ -27,6 +27,7 @@ class Admin extends StatelessWidget {
                     Map<String, dynamic> data =
                         listAllData[index].data()! as Map<String, dynamic>;
                     return ListTile(
+                      leading: Image.network(data["gambar"].toString()),
                       title: Text(data["nama"].toString()),
                       subtitle: Text(data['harga'].toString()),
                       trailing: IconButton(
@@ -81,7 +82,10 @@ class Admin extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/add');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddPage()),
+          );
         },
         child: Icon(Icons.add),
       ),
