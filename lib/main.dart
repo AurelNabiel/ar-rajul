@@ -6,10 +6,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:ar_rajul/config.dart';
 
 import 'pages/edit_product.dart';
 
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const User(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -51,10 +52,31 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-
-        // child: Image.asset("adminUser.png"),
-      ),
-    );
+        body: Container(
+            constraints: const BoxConstraints.expand(),
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://firebasestorage.googleapis.com/v0/b/ar-rajul.appspot.com/o/adminUser.png?alt=media&token=6f9b36f1-e634-4dec-89ae-de4e4f436e90'),
+                    fit: BoxFit.cover)),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const DecoratedBox(decoration: BoxDecoration()),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(daws2),
+                  ),
+                ),
+                const SizedBox(width: 20,),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const DecoratedBox(decoration: BoxDecoration()),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(daws2),
+                  ),
+                ),
+              ],
+            )));
   }
 }
