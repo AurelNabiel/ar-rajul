@@ -166,21 +166,75 @@ class Firebase_service {
     }
   }
 
-  void filterData() async {
-    final result = await firestore
-        .collection('users')
-        .where('domisili', isEqualTo: 'bekasi')
-        .where('umur', isLessThan: 20)
-        .where('hobi', isEqualTo: 'basket')
-        .get();
-    // print(result.docs.length);
-    if (result.docs.length > 0) {
-      log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
-      result.docs.forEach((element) {
-        log('ID : ${element.id}');
-        log('DATA : ${element.data()}');
-      });
-    } else
-      log('Data Tidak Ada');
-  }
+  // void filterSamase() async {
+  //   final result = await firestore
+  //       .collection('a')
+  //       .where('namaGamis', isEqualTo: 'bekasi')
+  //       .where('umur', isLessThan: 20)
+  //       .where('hobi', isEqualTo: 'basket')
+  //       .get();
+  //   // print(result.docs.length);
+  //   if (result.docs.length > 0) {
+  //     log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+  //     result.docs.forEach((element) {
+  //       log('ID : ${element.id}');
+  //       log('DATA : ${element.data()}');
+  //     });
+  //   } else
+  //     log('Data Tidak Ada');
+  // }
+
+  // void filterRabbani() async {
+  //   final result = await firestore
+  //       .collection('gamis')
+  //       .where('domisili', isEqualTo: 'bekasi')
+  //       .where('umur', isLessThan: 20)
+  //       .where('hobi', isEqualTo: 'basket')
+  //       .get();
+  //   // print(result.docs.length);
+  //   if (result.docs.length > 0) {
+  //     log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+  //     result.docs.forEach((element) {
+  //       log('ID : ${element.id}');
+  //       log('DATA : ${element.data()}');
+  //     });
+  //   } else
+  //     log('Data Tidak Ada');
+  // }
+
+  // void filterXabit() async {
+  //   final result = await firestore
+  //       .collection('gamis')
+  //       .where('domisili', isEqualTo: 'bekasi')
+  //       .where('umur', isLessThan: 20)
+  //       .where('hobi', isEqualTo: 'basket')
+  //       .get();
+  //   // print(result.docs.length);
+  //   if (result.docs.length > 0) {
+  //     log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+  //     result.docs.forEach((element) {
+  //       log('ID : ${element.id}');
+  //       log('DATA : ${element.data()}');
+  //     });
+  //   } else
+  //     log('Data Tidak Ada');
+  // }
+
+  // void filterHamd() async {
+  //   final result = await firestore
+  //       .collection('gamis')
+  //       .where('domisili', isEqualTo: 'bekasi')
+  //       .where('umur', isLessThan: 20)
+  //       .where('hobi', isEqualTo: 'basket')
+  //       .get();
+  //   // print(result.docs.length);
+  //   if (result.docs.length > 0) {
+  //     log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+  //     result.docs.forEach((element) {
+  //       log('ID : ${element.id}');
+  //       log('DATA : ${element.data()}');
+  //     });
+  //   } else
+  //     log('Data Tidak Ada');
+  // }
 }
