@@ -1,5 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter, unused_import
 
+import 'package:ar_rajul/pages/user%20get.dart';
 import 'package:ar_rajul/pages/user.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home:  Userget(),
     );
   }
 }
