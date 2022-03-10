@@ -16,12 +16,13 @@ class Firebase_service {
       String ukuran, String warna, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
+    
 
     try {
       await gamis.add({
-        "namaGamis": namaGamis,
+        "nama": namaGamis,
         "harga": harga,
-        "gambar": gambar,
+        "foto": gambar,
         "promo": promo,
         "size": ukuran,
         "color": warna
@@ -165,9 +166,63 @@ class Firebase_service {
     }
   }
 
-  void filterData() async {
+  void filterSamase() async {
     final result = await firestore
-        .collection('users')
+        .collection('a')
+        .where('namaGamis', isEqualTo: 'bekasi')
+        .where('umur', isLessThan: 20)
+        .where('hobi', isEqualTo: 'basket')
+        .get();
+    // print(result.docs.length);
+    if (result.docs.length > 0) {
+      log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+      result.docs.forEach((element) {
+        log('ID : ${element.id}');
+        log('DATA : ${element.data()}');
+      });
+    } else
+      log('Data Tidak Ada');
+  }
+
+  void filterRabbani() async {
+    final result = await firestore
+        .collection('gamis')
+        .where('domisili', isEqualTo: 'bekasi')
+        .where('umur', isLessThan: 20)
+        .where('hobi', isEqualTo: 'basket')
+        .get();
+    // print(result.docs.length);
+    if (result.docs.length > 0) {
+      log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+      result.docs.forEach((element) {
+        log('ID : ${element.id}');
+        log('DATA : ${element.data()}');
+      });
+    } else
+      log('Data Tidak Ada');
+  }
+
+  void filterXabit() async {
+    final result = await firestore
+        .collection('gamis')
+        .where('domisili', isEqualTo: 'bekasi')
+        .where('umur', isLessThan: 20)
+        .where('hobi', isEqualTo: 'basket')
+        .get();
+    // print(result.docs.length);
+    if (result.docs.length > 0) {
+      log('Data Yang Terfilter Ada : ${result.docs.length.toString()}');
+      result.docs.forEach((element) {
+        log('ID : ${element.id}');
+        log('DATA : ${element.data()}');
+      });
+    } else
+      log('Data Tidak Ada');
+  }
+
+  void filterHamd() async {
+    final result = await firestore
+        .collection('gamis')
         .where('domisili', isEqualTo: 'bekasi')
         .where('umur', isLessThan: 20)
         .where('hobi', isEqualTo: 'basket')

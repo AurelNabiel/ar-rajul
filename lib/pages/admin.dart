@@ -1,3 +1,4 @@
+import 'package:ar_rajul/config.dart';
 import 'package:ar_rajul/pages/add_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +36,7 @@ class Admin extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(25.0)),
                             color: Colors.white,
                             boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withAlpha(300),
-                                  blurRadius: 10.0),
+                              BoxShadow(color: daws, blurRadius: 10.0),
                             ]),
                         child: Padding(
                           padding: EdgeInsets.all(10.0),
@@ -62,7 +61,7 @@ class Admin extends StatelessWidget {
                                       children: [
                                         Text(
                                           data["namaGamis"].toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.bold,

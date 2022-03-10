@@ -1,7 +1,11 @@
 // ignore: avoid_web_libraries_in_flutter, unused_import
 
 import 'package:ar_rajul/pages/admin.dart';
+<<<<<<< HEAD
 import 'package:ar_rajul/pages/user%20get.dart';
+=======
+import 'package:ar_rajul/pages/filter.dart';
+>>>>>>> fe0825d6c8d1862e368555dc8bda2c4dbb044b72
 import 'package:ar_rajul/pages/user.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,7 +42,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
+<<<<<<< HEAD
       home:  Userget(),
+=======
+      home: const Filter(),
+>>>>>>> fe0825d6c8d1862e368555dc8bda2c4dbb044b72
     );
   }
 }
@@ -97,8 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 130,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => User()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const User()));
                       },
                       child: Text(
                         "User",
