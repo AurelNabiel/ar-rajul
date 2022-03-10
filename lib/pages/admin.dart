@@ -18,6 +18,7 @@ class Admin extends StatelessWidget {
       body: StreamBuilder<QuerySnapshot<Object?>>(
           stream: Firebase_service().streamData(),
           builder: (context, snapshot) {
+            // ignore: avoid_print
             print(snapshot.connectionState);
             if (snapshot.connectionState == ConnectionState.active) {
               var listAllData = snapshot.data!.docs;
@@ -32,7 +33,7 @@ class Admin extends StatelessWidget {
                         height: 150,
                         decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(25.0)),
+                                const BorderRadius.all(Radius.circular(25.0)),
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
@@ -40,12 +41,13 @@ class Admin extends StatelessWidget {
                                   blurRadius: 10.0),
                             ]),
                         child: Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Row(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
+                                  
                                   children: [
                                     Image.network(
                                       data["gambar"].toString(),
@@ -57,27 +59,27 @@ class Admin extends StatelessWidget {
                                 Expanded(
                                   flex: 2,
                                   child: Padding(
-                                    padding: EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.all(4.0),
                                     child: Column(
                                       children: [
                                         Text(
                                           data["namaGamis"].toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.bold,
-                                              fontFamily: 'Oxygen'),
+                                             ),
                                           textAlign: TextAlign.left,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         Text(
                                           data["harga"].toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 18.0,
-                                              fontFamily: 'Oxygen'),
+                                              ),
                                           textAlign: TextAlign.left,
                                         ),
                                         Row(
@@ -127,9 +129,8 @@ class Admin extends StatelessWidget {
                                                     )
                                                   ],
                                                 ).show();
-                                                ;
                                               },
-                                              icon: Icon(Icons.delete),
+                                              icon: const Icon(Icons.delete),
                                             ),
                                             IconButton(
                                               onPressed: () {
@@ -143,7 +144,7 @@ class Admin extends StatelessWidget {
                                                                             index]
                                                                         .id)));
                                               },
-                                              icon: Icon(
+                                              icon: const Icon(
                                                 Icons.edit,
                                               ),
                                             )
@@ -159,7 +160,7 @@ class Admin extends StatelessWidget {
                 },
               );
             }
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }),
@@ -170,7 +171,7 @@ class Admin extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const AddPage()),
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
