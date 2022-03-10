@@ -108,13 +108,7 @@ class Filter extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   Map<String, dynamic> data = listAllData[index]
                                       .data()! as Map<String, dynamic>;
-                                  return
-                                      // ListTile(
-
-                                      //   title: Text(data['warna']),
-                                      //   trailing: Text(data['harga'].toString()),
-                                      // );
-                                      Card(
+                                  return Card(
                                     elevation: 20,
                                     color: daws6,
                                     shape: RoundedRectangleBorder(
@@ -132,100 +126,43 @@ class Filter extends StatelessWidget {
                           );
                         }),
                   ),
-                  // Column(
-                  //   children: [
-                  //     Card(
-                  //         elevation: 20,
-                  //         color: daws6,
-                  //         shape: RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(10),
-                  //         ),
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             const SizedBox(
-                  //                 width: 250,
-                  //                 height: 100,
-                  //                 child: Center(
-                  //                   child: Text('Black',
-                  //                       style: TextStyle(fontSize: 50)),
-                  //                 )),
-                  //             Card(
-                  //                 elevation: 20,
-                  //                 shape: RoundedRectangleBorder(
-                  //                   borderRadius: BorderRadius.circular(150),
-                  //                 ),
-                  //                 child: Container(
-                  //                     width: 75,
-                  //                     height: 75,
-                  //                     decoration: const BoxDecoration(
-                  //                         // The child of a round Card should be in round shape
-                  //                         shape: BoxShape.circle,
-                  //                         color: Colors.black))),
-                  //           ],
-                  //         )),
-                  //     Card(
-                  //         elevation: 20,
-                  //         color: daws6,
-                  //         shape: RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(10),
-                  //         ),
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             const SizedBox(
-                  //                 width: 250,
-                  //                 height: 100,
-                  //                 child: Center(
-                  //                   child: Text('Black',
-                  //                       style: TextStyle(fontSize: 50)),
-                  //                 )),
-                  //             Card(
-                  //                 elevation: 20,
-                  //                 shape: RoundedRectangleBorder(
-                  //                   borderRadius: BorderRadius.circular(150),
-                  //                 ),
-                  //                 child: Container(
-                  //                     width: 75,
-                  //                     height: 75,
-                  //                     decoration: const BoxDecoration(
-                  //                         // The child of a round Card should be in round shape
-                  //                         shape: BoxShape.circle,
-                  //                         color: Colors.black))),
-                  //           ],
-                  //         )),
-                  //     Card(
-                  //         elevation: 20,
-                  //         color: daws6,
-                  //         shape: RoundedRectangleBorder(
-                  //           borderRadius: BorderRadius.circular(10),
-                  //         ),
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             const SizedBox(
-                  //                 width: 250,
-                  //                 height: 100,
-                  //                 child: Center(
-                  //                   child: Text('Black',
-                  //                       style: TextStyle(fontSize: 50)),
-                  //                 )),
-                  //             Card(
-                  //                 elevation: 20,
-                  //                 shape: RoundedRectangleBorder(
-                  //                   borderRadius: BorderRadius.circular(150),
-                  //                 ),
-                  //                 child: Container(
-                  //                     width: 75,
-                  //                     height: 75,
-                  //                     decoration: const BoxDecoration(
-                  //                         // The child of a round Card should be in round shape
-                  //                         shape: BoxShape.circle,
-                  //                         color: Colors.black))),
-                  //           ],
-                  //         )),
-                  //   ],
-                  // )
+                  const Text(
+                    "Size",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, height: 5, fontSize: 20),
+                  ),
+                  Container(
+                    height: 500,
+                    child: FutureBuilder<QuerySnapshot<Object?>>(
+                        future: Firebase_service().getData(),
+                        // ignore: missing_return
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            var listAllData = snapshot.data!.docs;
+                            return ListView.builder(
+                                itemCount: listAllData.length,
+                                itemBuilder: (context, index) {
+                                  Map<String, dynamic> data = listAllData[index]
+                                      .data()! as Map<String, dynamic>;
+                                  return Card(
+                                    elevation: 20,
+                                    color: daws6,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(data['ukuran'],
+                                        style: TextStyle(fontSize: 50)),
+                                  );
+                                });
+                          }
+                          return Container(
+                            alignment: Alignment.center,
+                            // ignore: unnecessary_const
+                            child: const CircularProgressIndicator(),
+                          );
+                        }),
+                  ),
                 ],
               ),
             )));
