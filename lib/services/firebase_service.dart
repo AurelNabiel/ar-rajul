@@ -16,13 +16,12 @@ class Firebase_service {
       String ukuran, String warna, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
-    
 
     try {
       await gamis.add({
-        "nama": namaGamis,
+        "namaGamis": namaGamis,
         "harga": harga,
-        "foto": gambar,
+        "gambar": gambar,
         "promo": promo,
         "size": ukuran,
         "color": warna
