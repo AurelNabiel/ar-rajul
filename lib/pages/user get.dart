@@ -72,8 +72,6 @@ class Userget extends StatelessWidget {
                       ),
                     ),
                   ),
-
-
                   const SizedBox(height: 40),
                   Container(
                     width: 1000,
@@ -180,7 +178,6 @@ class Userget extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -202,8 +199,6 @@ class Userget extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               SingleChildScrollView(
-
-
                 child: Container(
                   height: 800,
                   width: 1000,
@@ -226,20 +221,17 @@ class Userget extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 70, 0, 0),
-
                                       child: Card(
                                         elevation: 10,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
-
                                         child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(  10, 12, 6, 6),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 12, 6, 6),
                                           child: Row(
                                             children: [
-
-
                                               Container(
                                                 decoration: BoxDecoration(
                                                   borderRadius:
@@ -262,9 +254,6 @@ class Userget extends StatelessWidget {
                                                                   .toString()))),
                                                 ),
                                               ),
-
-
-
                                               Container(
                                                 height: 280,
                                                 width: 200,
@@ -272,11 +261,10 @@ class Userget extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(20),
                                                 ),
-
-
                                                 child: Padding(
                                                   padding:
-                                                      const EdgeInsets.fromLTRB( 10, 60, 6, 6),
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 60, 6, 6),
                                                   child: Column(
                                                     children: [
                                                       Text(
@@ -315,9 +303,6 @@ class Userget extends StatelessWidget {
                                                   ),
                                                 ),
                                               ),
-
-
-
                                             ],
                                           ),
                                         ),
