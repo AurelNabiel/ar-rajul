@@ -21,14 +21,13 @@ class User extends StatelessWidget {
                     Map<String, dynamic> data =
                         listAllData[index].data()! as Map<String, dynamic>;
                     return ListTile(
-                      leading: Image.network(data['gambar']),
-                      title: Text(data['namaGamis']),
+                      leading: Image.network(data['gambar'].toString()),
+                      title: Text(data['namaGamis'].toString()),
                       subtitle: Text(data['harga'].toString()),
                     );
                   });
             }
             return Container(
-              alignment: Alignment.center,
               // ignore: unnecessary_const
               child: const CircularProgressIndicator(),
             );
