@@ -56,7 +56,7 @@ class _AddPageState extends State<AddPage> {
                       style: TextStyle(fontSize: lebar >= 800 ? 30 : 30),
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.green[700],
+                        primary: Colors.blueGrey,
                         padding: EdgeInsets.symmetric(
                             vertical: MediaQuery.of(context).size.height / 50)),
                   ),

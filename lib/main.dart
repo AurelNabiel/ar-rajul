@@ -1,6 +1,7 @@
 // ignore: avoid_web_libraries_in_flutter, unused_import
 
 import 'package:ar_rajul/pages/admin.dart';
+import 'package:ar_rajul/pages/filter.dart';
 import 'package:ar_rajul/pages/user.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home: const MyHomePage(),
+      home: const Filter(),
     );
   }
 }
@@ -70,13 +71,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),
                     width: 130,
-                    
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Admin()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Admin()));
                       },
-                      child: Text("Admin",style: TextStyle(fontSize: 20),),
-                      
+                      child: Text(
+                        "Admin",
+                        style: TextStyle(fontSize: 20),
+                      ),
                       style: ElevatedButton.styleFrom(
                           primary: daws2,
                           padding: EdgeInsets.symmetric(
@@ -87,17 +90,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   const SizedBox(
                     width: 35,
                   ),
-                  Container(decoration: BoxDecoration(),
+                  Container(
+                    decoration: BoxDecoration(),
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),
                     width: 130,
-                    
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>const User()));
                       },
-                      child: Text("User",style: TextStyle(fontSize: 20),),
-                      
+                      child: Text(
+                        "User",
+                        style: TextStyle(fontSize: 20),
+                      ),
                       style: ElevatedButton.styleFrom(
                           primary: daws2,
                           padding: EdgeInsets.symmetric(

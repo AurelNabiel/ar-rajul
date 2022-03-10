@@ -7,9 +7,9 @@ class User extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:Column(
-        children:[  FutureBuilder<QuerySnapshot<Object?>>(
+    return 
+    Scaffold(
+      body: FutureBuilder<QuerySnapshot<Object?>>(
           future: Firebase_service().getData(),
           // ignore: missing_return
           builder: (context, snapshot) {
@@ -32,8 +32,7 @@ class User extends StatelessWidget {
               // ignore: unnecessary_const
               child: const CircularProgressIndicator(),
             );
-          }),]
-      )
+          }),
     );
   }
 }
