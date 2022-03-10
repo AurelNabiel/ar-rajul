@@ -32,8 +32,9 @@ class Filter extends StatelessWidget {
           // ],
         ),
         body: Container(
+          
             decoration: BoxDecoration(color: daws6),
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(35),
             child: SingleChildScrollView(
               child: Column(
                 // ignore: prefer_const_literals_to_create_immutables
@@ -95,7 +96,7 @@ class Filter extends StatelessWidget {
                         fontWeight: FontWeight.bold, height: 5, fontSize: 20),
                   ),
                   Container(
-                    height: 500,
+                    height: 400,
                     child: FutureBuilder<QuerySnapshot<Object?>>(
                         future: Firebase_service().getData(),
                         // ignore: missing_return
@@ -132,7 +133,8 @@ class Filter extends StatelessWidget {
                         fontWeight: FontWeight.bold, height: 5, fontSize: 20),
                   ),
                   Container(
-                    height: 500,
+                    height: 400,
+                    width: 300,
                     child: FutureBuilder<QuerySnapshot<Object?>>(
                         future: Firebase_service().getData(),
                         // ignore: missing_return
@@ -146,6 +148,7 @@ class Filter extends StatelessWidget {
                                   Map<String, dynamic> data = listAllData[index]
                                       .data()! as Map<String, dynamic>;
                                   return Card(
+                                    
                                     elevation: 20,
                                     color: daws6,
                                     shape: RoundedRectangleBorder(
