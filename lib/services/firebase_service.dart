@@ -9,6 +9,7 @@ class Firebase_service {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Future<QuerySnapshot<Object?>> getData() async {
     CollectionReference gamis = firestore.collection("gamis");
+    CollectionReference gambarMerk = firestore.collection("merk");
     return await gamis.get();
   }
 

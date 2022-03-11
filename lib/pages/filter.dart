@@ -109,15 +109,21 @@ class Filter extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   Map<String, dynamic> data = listAllData[index]
                                       .data()! as Map<String, dynamic>;
-                                  return Card(
-                                    elevation: 20,
-                                    color: daws6,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Text(data['warna'],
-                                        style: TextStyle(fontSize: 50)),
-                                  );
+                                  return 
+                                  CheckboxListTile(value: _checked, onChanged: (true value){
+                                    setState((){
+                                      _checked = value;
+                                    })
+                                  },title: Text(data['warna']),secondary: Icon(Icons.circle),activeColor: daws6,checkColor: daws,)
+                                  // Card(
+                                  //   elevation: 20,
+                                  //   color: daws6,
+                                  //   shape: RoundedRectangleBorder(
+                                  //     borderRadius: BorderRadius.circular(10),
+                                  //   ),
+                                  //   child: Text(data['warna'],
+                                  //       style: TextStyle(fontSize: 50)),
+                                  // );
                                 });
                           }
                           return Container(
@@ -170,4 +176,6 @@ class Filter extends StatelessWidget {
               ),
             )));
   }
+
+  void setState(Null Function() param0) {}
 }

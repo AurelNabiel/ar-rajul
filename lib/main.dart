@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Admin()));
                       },
-                      child: Text(
+                      child: const Text(
                         "Admin",
                         style: TextStyle(fontSize: 20),
                       ),
