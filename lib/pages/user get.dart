@@ -48,7 +48,6 @@ class Userget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
                   const SizedBox(height: 40),
                   Center(
                     child: Padding(
@@ -67,7 +66,8 @@ class Userget extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               image: const DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage('assets/images/123.jpg'))),
+                                  image:
+                                      AssetImage('assets/images/banner.png'))),
                         ),
                       ),
                     ),
@@ -80,10 +80,8 @@ class Userget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(51, 12, 6, 6),
                         child: ListView(
-                           scrollDirection: Axis.horizontal,
+                          scrollDirection: Axis.horizontal,
                           children: [
-                    
-                    
                             Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -102,8 +100,6 @@ class Userget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                    
-                    
                             Padding(
                               padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
                               child: Card(
@@ -124,9 +120,6 @@ class Userget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                    
-                    
-                    
                             Padding(
                               padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
                               child: Card(
@@ -147,9 +140,6 @@ class Userget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                    
-                    
-                    
                             Padding(
                               padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
                               child: Card(
@@ -288,9 +278,20 @@ class Userget extends StatelessWidget {
                                                             color:
                                                                 Colors.black),
                                                       ),
-                                                      SizedBox(height: 40),
+                                                      SizedBox(height: 20),
                                                       Text(
                                                         data['ukuran']
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            fontSize: 23,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      SizedBox(height: 20),
+                                                      Text(
+                                                        data['promo']
                                                             .toString(),
                                                         style: const TextStyle(
                                                             fontSize: 23,
