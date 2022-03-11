@@ -1,5 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter, unused_import
 
+import 'package:ar_rajul/pages/add_product.dart';
 import 'package:ar_rajul/pages/admin.dart';
 import 'package:ar_rajul/pages/filter.dart';
 import 'package:ar_rajul/pages/user%20get.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home:  Filter(),
+      home:  Admin(),
     );
   }
 }
