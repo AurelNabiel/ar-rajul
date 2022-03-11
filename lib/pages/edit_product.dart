@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, unused_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, unused_import, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 
@@ -6,6 +6,7 @@ class EditPage extends StatefulWidget {
   final Map data;
   final String docId;
   const EditPage({required this.data, required this.docId});
+  @override
   State<EditPage> createState() => _EditPageState();
 }
 
