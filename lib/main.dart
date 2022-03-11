@@ -1,17 +1,13 @@
 // ignore: avoid_web_libraries_in_flutter, unused_import
 
+import 'package:ar_rajul/pages/add_product.dart';
 import 'package:ar_rajul/pages/admin.dart';
 import 'package:ar_rajul/pages/filter.dart';
 import 'package:ar_rajul/pages/user%20get.dart';
 import 'package:ar_rajul/pages/user.dart';
-import 'package:ar_rajul/services/firebase_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:ar_rajul/config.dart';
-
-import 'pages/edit_product.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +35,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home:  Filter(),
+      home:  Admin(),
     );
   }
 }
@@ -74,15 +70,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 130,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Admin()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Admin()));
                       },
                       child: const Text(
                         "Admin",
                         style: TextStyle(fontSize: 20),
                       ),
                       style: ElevatedButton.styleFrom(
-                          primary: daws2,
+                          primary: daws,
                           padding: EdgeInsets.symmetric(
                               vertical:
                                   MediaQuery.of(context).size.height / 50)),
@@ -92,20 +90,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 35,
                   ),
                   Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(25.0)),
+                    ),
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),
                     width: 130,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const User()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const User()));
                       },
-                      child: Text(
+                      child: const Text(
                         "User",
                         style: TextStyle(fontSize: 20),
                       ),
                       style: ElevatedButton.styleFrom(
-                          primary: daws2,
+                          primary: daws,
                           padding: EdgeInsets.symmetric(
                               vertical:
                                   MediaQuery.of(context).size.height / 50)),

@@ -1,6 +1,7 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore: unused_import
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -68,6 +69,7 @@ class Firebase_service {
 
   void DeleteProduct(String docId, context) async {
     DocumentReference gamis = firestore.collection("gamis").doc(docId);
+    // ignore: unused_local_variable
     int count = 0;
 
     try {

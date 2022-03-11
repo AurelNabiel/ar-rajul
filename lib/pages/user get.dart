@@ -48,6 +48,7 @@ class Userget extends StatelessWidget {
                       ),
                     ),
                   ),
+                  
                   const SizedBox(height: 40),
                   Center(
                     child: Padding(
@@ -72,90 +73,105 @@ class Userget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(51, 12, 6, 6),
-                      child: Row(
-                        children: [
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                // color: Colors.black,
-                                // border: Border.all(width: 8),
+                  Container(
+                    width: 700,
+                    height: 100,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(51, 12, 6, 6),
+                        child: ListView(
+                           scrollDirection: Axis.horizontal,
+                          children: [
+                    
+                    
+                            Card(
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
-                                image: const DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage('assets/images/456.png'),
+                              ),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                  // color: Colors.black,
+                                  // border: Border.all(width: 8),
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: const DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: AssetImage('assets/images/78.png'),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                    // color: Colors.black,
-                                    // border: Border.all(width: 8),
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: const DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            'assets/images/456.png'))),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                    // color: Colors.black,
-                                    // border: Border.all(width: 8),
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: const DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            'assets/images/456.png'))),
+                    
+                    
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                      // color: Colors.black,
+                                      // border: Border.all(width: 8),
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: const DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              'assets/images/90.png'))),
+                                ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                    // color: Colors.black,
-                                    // border: Border.all(width: 8),
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: const DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            'assets/images/456.png'))),
+                    
+                    
+                    
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                      // color: Colors.black,
+                                      // border: Border.all(width: 8),
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: const DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              'assets/images/456.png'))),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                    
+                    
+                    
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                      // color: Colors.black,
+                                      // border: Border.all(width: 8),
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: const DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              'assets/images/456.png'))),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
