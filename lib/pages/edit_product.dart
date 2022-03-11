@@ -6,7 +6,6 @@ class EditPage extends StatefulWidget {
   final Map data;
   final String docId;
   const EditPage({required this.data, required this.docId});
-  @override
   State<EditPage> createState() => _EditPageState();
 }
 

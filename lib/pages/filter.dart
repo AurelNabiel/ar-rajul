@@ -1,4 +1,5 @@
 import 'package:ar_rajul/config.dart';
+import 'package:ar_rajul/pages/user%20get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -25,14 +26,16 @@ class Filter extends StatelessWidget {
           ),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Userget()));
+            },
           ),
           // actions: [
           //   menuButton,
           // ],
         ),
         body: Container(
-          
             decoration: BoxDecoration(color: daws6),
             padding: EdgeInsets.all(35),
             child: SingleChildScrollView(
@@ -148,7 +151,6 @@ class Filter extends StatelessWidget {
                                   Map<String, dynamic> data = listAllData[index]
                                       .data()! as Map<String, dynamic>;
                                   return Card(
-                                    
                                     elevation: 20,
                                     color: daws6,
                                     shape: RoundedRectangleBorder(

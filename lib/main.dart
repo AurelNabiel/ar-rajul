@@ -3,7 +3,6 @@
 import 'package:ar_rajul/pages/admin.dart';
 import 'package:ar_rajul/pages/filter.dart';
 import 'package:ar_rajul/pages/user%20get.dart';
-import 'package:ar_rajul/pages/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/config.dart';
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home: Filter(),
+      home: MyHomePage(),
     );
   }
 }
@@ -98,10 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 130,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const User()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Userget()));
                       },
                       child: const Text(
                         "User",
