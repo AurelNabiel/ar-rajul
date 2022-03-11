@@ -34,11 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-<<<<<<< HEAD
       home: MyHomePage(),
-=======
-      home:  Admin(),
->>>>>>> ba1a93c2eb6c39db2cdc931eb73b38df4e7ef88a
     );
   }
 }
