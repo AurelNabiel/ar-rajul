@@ -74,7 +74,7 @@ class Userget extends StatelessWidget {
                   ),
                   const SizedBox(height: 40),
                   Container(
-                    width: 1000,
+                    width: 700,
                     height: 100,
                     child: Center(
                       child: Padding(
