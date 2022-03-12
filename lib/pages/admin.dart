@@ -1,10 +1,9 @@
 import 'package:ar_rajul/config.dart';
 import 'package:ar_rajul/pages/add_product.dart';
+import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
-import '../services/firebase_service.dart';
 import 'edit_product.dart';
 
 class Admin extends StatelessWidget {
@@ -29,7 +28,7 @@ class Admin extends StatelessWidget {
                   Map<String, dynamic> data =
                       listAllData[index].data()! as Map<String, dynamic>;
                   return Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(20),
                     child: Container(
                         height: 240,
                         decoration: BoxDecoration(
@@ -37,7 +36,7 @@ class Admin extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(25.0)),
                             color: Colors.white,
                             boxShadow: [
-                              BoxShadow(color: daws, blurRadius: 10.0),
+                              BoxShadow(color: daws, blurRadius: 3.0),
                             ]),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),

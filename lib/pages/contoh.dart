@@ -1,3 +1,4 @@
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,24 +14,19 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> gamis = FirebaseFirestore.instance
-        .collection("gamis")
+    final Stream<QuerySnapshot> food = FirebaseFirestore.instance
+        .collection("makanan")
+        .where("nama", isEqualTo: widget.search)
         .snapshots();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-          stream: gamis,
+          stream: food,
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
-              var listAllData = snapshot.data!.docs;
-
-              var data1 = listAllData
-                  .where((element) =>
-                      element["namaGamis"].toString().toLowerCase().contains(widget.search))
-                  .toList();
-              print(data1.length);
+              var listData = snapshot.data!.docs;
               return SafeArea(
                   child: SingleChildScrollView(
                 child: Padding(
@@ -53,11 +49,11 @@ class _SearchState extends State<Search> {
                         height: height,
                         width: width,
                         child: ListView.builder(
-                          itemCount: data1.length,
+                          itemCount: listData.length,
                           itemBuilder: (context, i) {
                             Map<String, dynamic> data =
-                                data1[i].data()! as Map<String, dynamic>;
-                            return _data(height, width, data);
+                                listData[i].data()! as Map<String, dynamic>;
+                            return _list(height, width, data);
                           },
                         ),
                       )
@@ -75,7 +71,7 @@ class _SearchState extends State<Search> {
   }
 }
 
-Widget _data(height, width, data) {
+Widget _list(height, width, data) {
   return Container(
     margin: EdgeInsets.only(bottom: 40),
     height: height / 5,
@@ -95,9 +91,21 @@ Widget _data(height, width, data) {
             width: width / 2.9,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(data["gambar"].toString()),
-                    fit: BoxFit.cover),
+                    image: NetworkImage(data["img"]), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+                Text(
+                  data["rating"].toString(),
+                  style: TextStyle(fontSize: width / 40),
+                )
+              ],
+            ),
           ),
           SizedBox(
             width: width / 20,
@@ -106,16 +114,16 @@ Widget _data(height, width, data) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                data['namaGamis'].toString(),
+                data["nama"],
                 style: TextStyle(
                     fontSize: width / 27, fontWeight: FontWeight.w700),
               ),
               Text(
-                "Rp ${data["harga"].toString()}",
+                "Rp ${data["harga"]}",
                 style: TextStyle(fontSize: width / 35),
               ),
               Text(
-                "${data["ukuran"].toString()}, ${data["promo"].toString()}%",
+                "${data["daerah"]}, ${data["promo"]}%",
                 style: TextStyle(fontSize: width / 35),
               ),
             ],
