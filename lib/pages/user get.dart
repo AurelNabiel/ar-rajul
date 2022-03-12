@@ -85,7 +85,7 @@ class Userget extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       height: 100,
-                      width: 375,
+                      width: 400,
                       child: FutureBuilder<QuerySnapshot<Object?>>(
                           future: Firebase_service().getData2(),
                           // ignore: missing_return
@@ -103,7 +103,7 @@ class Userget extends StatelessWidget {
                                     return Row(
                                       children: [
                                         Container(
-                                          alignment: Alignment.centerRight,
+                                          alignment: Alignment.center,
                                           child: Card(
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
