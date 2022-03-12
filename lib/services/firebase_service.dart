@@ -6,16 +6,14 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-
-
 class Firebase_service {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Future<QuerySnapshot<Object?>> getData() async {
     CollectionReference gamis = firestore.collection("gamis");
-    
     return await gamis.get();
   }
-  Future<QuerySnapshot<Object?>> getData2() async{
+
+  Future<QuerySnapshot<Object?>> getData2() async {
     CollectionReference merk = firestore.collection("merk");
     return await merk.get();
   }

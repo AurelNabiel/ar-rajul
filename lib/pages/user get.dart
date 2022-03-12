@@ -11,9 +11,13 @@ import 'admin.dart';
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 class Userget extends StatelessWidget {
+  List merek =[];
+  List FilteredMerek =[];
   TextEditingController searchController = TextEditingController();
   CollectionReference merk = firestore.collection("merk");
   @override
+
+  
   Widget build(BuildContext context) {
     const color = Color.fromRGBO(222, 234, 220, 1);
     const color2 = Color.fromRGBO(255, 255, 255, 1);
