@@ -1,27 +1,26 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// ignore: unused_import
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
-
 
 class Firebase_service {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Future<QuerySnapshot<Object?>> getData() async {
     CollectionReference gamis = firestore.collection("gamis");
-    
+
     return await gamis.get();
   }
-  Future<QuerySnapshot<Object?>> getData2() async{
+  Future<QuerySnapshot<Object?>> getData2() async {
     CollectionReference merk = firestore.collection("merk");
     return await merk.get();
   }
 
-  void addProduct(String namaGamis, int harga, String gambar, String promo,
-      String ukuran, String warna, String merk, context) async {
+  
+
+  void addProduct(String namaGamis, int harga, String merk, String gambar,
+      String promo, String ukuran, String warna, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
 
@@ -123,8 +122,8 @@ class Firebase_service {
     return gamis.snapshots();
   }
 
-  void UpdateProduct(String docId, String namaGamis, int harga, String gambar,
-      String promo, String ukuran, String warna, String merk, context) async {
+  void UpdateProduct(String docId, String namaGamis, int harga, String merk,
+      String gambar, String promo, String ukuran, String warna, context) async {
     DocumentReference gamis = firestore.collection("gamis").doc(docId);
     int count = 0;
 
