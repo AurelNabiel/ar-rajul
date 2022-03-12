@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home:  Admin(),
+      home:  const Userget(),
     );
   }
 }
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const User()));
+                                builder: (context) =>  Userget()));
                       },
                       child: const Text(
                         "User",

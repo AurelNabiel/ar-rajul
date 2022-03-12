@@ -1,15 +1,29 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, sized_box_for_whitespace, avoid_unnecessary_containers
 
+import 'package:ar_rajul/pages/search.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class Userget extends StatelessWidget {
-  TextEditingController searchController = TextEditingController();
+// ignore: must_be_immutable, use_key_in_widget_constructors
+
+// ignore: must_be_immutable, use_key_in_widget_constructors
+class Userget extends StatefulWidget {
+  const Userget({ Key? key }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<Userget> createState() => _UsergetState();
+}
+
+class _UsergetState extends State<Userget> {
+  TextEditingController searchController = TextEditingController();
+
+  
+  @override
+
+
+    Widget build(BuildContext context) {
     const color = Color.fromRGBO(222, 234, 220, 1);
     const color2 = Color.fromRGBO(255, 255, 255, 1);
     return Scaffold(
@@ -32,9 +46,13 @@ class Userget extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(6, 12, 6, 6),
+
+                          
                           child: TextField(
+                             onSubmitted: ((value) => Navigator.push(context, MaterialPageRoute(builder: (context)=> Search(search: value)))),
                             controller: searchController,
                             decoration: const InputDecoration(
+                              
                                 border: InputBorder.none,
                                 hintText: 'Search',
                                 labelStyle: TextStyle(
@@ -84,20 +102,23 @@ class Userget extends StatelessWidget {
                           children: [
                     
                     
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                decoration: BoxDecoration(
-                                  // color: Colors.black,
-                                  // border: Border.all(width: 8),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
-                                  image: const DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: AssetImage('assets/images/78.png'),
+                                ),
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    // color: Colors.black,
+                                    // border: Border.all(width: 8),
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: const DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage('assets/images/78.png'),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -203,17 +224,17 @@ class Userget extends StatelessWidget {
                   height: 800,
                   width: 1000,
                   child: FutureBuilder<QuerySnapshot<Object?>>(
-                      future: Firebase_service().getData(),
+                      future: Firebase_service().getData(),// mendapa
                       // ignore: missing_return
                       builder: (context, snapshot) {
                         if (snapshot.connectionState == ConnectionState.done) {
-                          var listAllData = snapshot.data!.docs;
+                          var listAllData = snapshot.data!.docs;// untuk mengambil data dari firebase dengan menggunakan snapshot data 
                           return ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              itemCount: listAllData.length,
+                              scrollDirection: Axis.vertical,// untuk membuat listview dalam bentuk vertikal
+                              itemCount: listAllData.length,// untuk menghitung jumlah data yang ada
                               itemBuilder: (context, index) {
                                 Map<String, dynamic> data = listAllData[index]
-                                    .data()! as Map<String, dynamic>;
+                                    .data()! as Map<String, dynamic>;// 
 
                                 return Center(
                                   child: Container(
@@ -277,7 +298,7 @@ class Userget extends StatelessWidget {
                                                             color:
                                                                 Colors.black),
                                                       ),
-                                                      SizedBox(height: 10),
+                                                      const SizedBox(height: 10),
                                                       Text(
                                                         data['harga']
                                                             .toString(),
@@ -288,7 +309,7 @@ class Userget extends StatelessWidget {
                                                             color:
                                                                 Colors.black),
                                                       ),
-                                                      SizedBox(height: 40),
+                                                      const SizedBox(height: 40),
                                                       Text(
                                                         data['ukuran']
                                                             .toString(),
@@ -314,7 +335,7 @@ class Userget extends StatelessWidget {
                                   // subtitle: Text(data['harga'].toString()),
                                 );
                               });
-                        }
+                        }// untuk 
                         return Container(
                           // ignore: unnecessary_const
                           child: const CircularProgressIndicator(),

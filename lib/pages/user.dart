@@ -27,6 +27,7 @@ class User extends StatelessWidget {
                     );
                   });
             }
+            // ignore: avoid_unnecessary_containers
             return Container(
               // ignore: unnecessary_const
               child: const CircularProgressIndicator(),
