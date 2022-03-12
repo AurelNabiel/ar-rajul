@@ -1,29 +1,26 @@
 // ignore_for_file: unused_import, sized_box_for_whitespace, avoid_unnecessary_containers
 
 import 'package:ar_rajul/pages/search.dart';
+import 'package:ar_rajul/pages/merch.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable, use_key_in_widget_constructors
+import 'admin.dart';
 
-// ignore: must_be_immutable, use_key_in_widget_constructors
-class Userget extends StatefulWidget {
-  const Userget({ Key? key }) : super(key: key);
+FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  @override
-  State<Userget> createState() => _UsergetState();
-}
-
-class _UsergetState extends State<Userget> {
+class Userget extends StatelessWidget {
+  List merek =[];
+  List FilteredMerek =[];
   TextEditingController searchController = TextEditingController();
+  CollectionReference merk = firestore.collection("merk");
+  @override
 
   
-  @override
-
-
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     const color = Color.fromRGBO(222, 234, 220, 1);
     const color2 = Color.fromRGBO(255, 255, 255, 1);
     return Scaffold(
@@ -66,7 +63,6 @@ class _UsergetState extends State<Userget> {
                       ),
                     ),
                   ),
-                  
                   const SizedBox(height: 40),
                   Center(
                     child: Padding(
@@ -77,123 +73,71 @@ class _UsergetState extends State<Userget> {
                         ),
                         child: Container(
                           height: 280,
-                          // padding: EdgeInsets.fromLTRB(20, 12, 6, 6),
                           width: 500,
                           decoration: BoxDecoration(
-                              // color: Colors.black,
-                              // border: Border.all(width: 8),
                               borderRadius: BorderRadius.circular(20),
                               image: const DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage('assets/images/123.jpg'))),
+                                  image:
+                                      AssetImage('assets/images/banner.png'))),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 40),
-                  Container(
-                    width: 700,
-                    height: 100,
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(51, 12, 6, 6),
-                        child: ListView(
-                           scrollDirection: Axis.horizontal,
-                          children: [
-                    
-                    
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                    // color: Colors.black,
-                                    // border: Border.all(width: 8),
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: const DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('assets/images/78.png'),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                    
-                    
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      // color: Colors.black,
-                                      // border: Border.all(width: 8),
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: const DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'assets/images/90.png'))),
-                                ),
-                              ),
-                            ),
-                    
-                    
-                    
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      // color: Colors.black,
-                                      // border: Border.all(width: 8),
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: const DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'assets/images/456.png'))),
-                                ),
-                              ),
-                            ),
-                    
-                    
-                    
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(52, 0, 0, 0),
-                              child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                      // color: Colors.black,
-                                      // border: Border.all(width: 8),
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: const DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              'assets/images/456.png'))),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                  Center(
+                    // padding:  EdgeInsets.all(10),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 100,
+                      width: 400,
+                      child: FutureBuilder<QuerySnapshot<Object?>>(
+                          future: Firebase_service().getData2(),
+                          // ignore: missing_return
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              var listAllData = snapshot.data!.docs;
+                              return ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: 4,
+                                  itemBuilder: (context, index) {
+                                    Map<String, dynamic> data =
+                                        listAllData[index].data()!
+                                            as Map<String, dynamic>;
+                                    return Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          child: Card(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const Merch()));
+                                                },
+                                                child: Image.network(
+                                                    data['gambar'].toString()),
+                                              )),
+                                          height: 200,
+                                          width: 100,
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            }
+                            return Container(
+                              alignment: Alignment.center,
+                              // ignore: unnecessary_const
+                              child: const CircularProgressIndicator(),
+                            );
+                          }),
                     ),
                   ),
                   const SizedBox(
@@ -300,8 +244,7 @@ class _UsergetState extends State<Userget> {
                                                       ),
                                                       const SizedBox(height: 10),
                                                       Text(
-                                                        data['harga']
-                                                            .toString(),
+                                                        "Rp ${data['harga']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:
@@ -309,10 +252,19 @@ class _UsergetState extends State<Userget> {
                                                             color:
                                                                 Colors.black),
                                                       ),
-                                                      const SizedBox(height: 40),
+                                                      SizedBox(height: 20),
                                                       Text(
-                                                        data['ukuran']
-                                                            .toString(),
+                                                        "Size : ${data['ukuran']}",
+                                                        style: const TextStyle(
+                                                            fontSize: 23,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      SizedBox(height: 20),
+                                                      Text(
+                                                        "Diskon : ${data['promo']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:
@@ -338,7 +290,12 @@ class _UsergetState extends State<Userget> {
                         }// untuk 
                         return Container(
                           // ignore: unnecessary_const
-                          child: const CircularProgressIndicator(),
+                          child: const CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+                            strokeWidth: 10,
+                            backgroundColor: Colors.grey,
+                          ),
                         );
                       }),
                 ),
@@ -348,3 +305,4 @@ class _UsergetState extends State<Userget> {
         ));
   }
 }
+    

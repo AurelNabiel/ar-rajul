@@ -1,10 +1,12 @@
+// ignore: duplicate_ignore
 // ignore: avoid_web_libraries_in_flutter, unused_import
+
+// ignore_for_file: unused_import
 
 import 'package:ar_rajul/pages/add_product.dart';
 import 'package:ar_rajul/pages/admin.dart';
 import 'package:ar_rajul/pages/filter.dart';
 import 'package:ar_rajul/pages/user%20get.dart';
-import 'package:ar_rajul/pages/user.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/config.dart';
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home:  const Userget(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -92,17 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     decoration: const BoxDecoration(
                       borderRadius:
-                          const BorderRadius.all(Radius.circular(25.0)),
+                          BorderRadius.all(Radius.circular(25.0)),
                     ),
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),
                     width: 130,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>  Userget()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Userget()));
                       },
                       child: const Text(
                         "User",

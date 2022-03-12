@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, unused_import, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
+import 'package:ar_rajul/pages/edit_product.dart';
 
 class EditPage extends StatefulWidget {
   final Map data;
@@ -11,9 +12,10 @@ class EditPage extends StatefulWidget {
 }
 
 class _EditPageState extends State<EditPage> {
-  TextEditingController namaGamis = TextEditingController();
-  TextEditingController harga = TextEditingController();
   TextEditingController gambar = TextEditingController();
+  TextEditingController namaGamis = TextEditingController();
+  TextEditingController merk = TextEditingController();
+  TextEditingController harga = TextEditingController();
   TextEditingController promo = TextEditingController();
   TextEditingController ukuran = TextEditingController();
   TextEditingController warna = TextEditingController();
@@ -23,6 +25,7 @@ class _EditPageState extends State<EditPage> {
     gambar.text = widget.data['gambar'];
     namaGamis.text = widget.data['namaGamis'];
     harga.text = widget.data['harga'].toString();
+    merk.text = widget.data['merk'];
     ukuran.text = widget.data['ukuran'];
     warna.text = widget.data['warna'];
     promo.text = widget.data['promo'];
@@ -46,7 +49,8 @@ class _EditPageState extends State<EditPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, namaGamis, harga, warna, ukuran, promo, gambar),
+                _form(context, namaGamis, harga, merk, warna, ukuran, promo,
+                    gambar),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
@@ -57,6 +61,7 @@ class _EditPageState extends State<EditPage> {
                           widget.docId,
                           namaGamis.text,
                           int.parse(harga.text),
+                          merk.text,
                           gambar.text,
                           promo.text,
                           ukuran.text,
@@ -82,12 +87,12 @@ class _EditPageState extends State<EditPage> {
   }
 }
 
-Widget _form(
-    BuildContext context, namaGamis, harga, gambar, ukuran, warna, promo) {
+Widget _form(BuildContext context, namaGamis, harga, merk, gambar, ukuran,
+    warna, promo) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _field(context, "Foto", gambar),
+      _field(context, "gambar Gamis", gambar),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
@@ -99,7 +104,7 @@ Widget _form(
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
-      _field(context, "Promo", promo),
+      _field(context, "Merk", merk),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
@@ -108,6 +113,10 @@ Widget _form(
         height: MediaQuery.of(context).size.height / 40,
       ),
       _field(context, "Color", warna),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Promo", promo),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),

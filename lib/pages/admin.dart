@@ -31,7 +31,7 @@ class Admin extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Container(
-                        height: 150,
+                        height: 240,
                         decoration: BoxDecoration(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(25.0)),
@@ -44,16 +44,24 @@ class Admin extends StatelessWidget {
                           child: Row(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  
-                                  children: [
-                                    Image.network(
-                                      data["gambar"].toString(),
-                                      height: 100,
-                                      width: 100,
-                                    )
-                                  ],
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Container(
+                                    height: 280,
+                                    width: 200,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 6.0,
+                                            color:
+                                                const Color.fromARGB(0, 69, 9, 211)),
+                                        borderRadius: BorderRadius.circular(20),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: NetworkImage(
+                                                data['gambar'].toString()))),
+                                  ),
                                 ),
                                 Expanded(
                                   flex: 2,
@@ -64,22 +72,40 @@ class Admin extends StatelessWidget {
                                         Text(
                                           data["namaGamis"].toString(),
                                           style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.bold,
-                                             ),
+                                            color: Colors.black,
+                                            fontSize: 24.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                           textAlign: TextAlign.left,
                                         ),
                                         const SizedBox(
                                           height: 10,
                                         ),
                                         Text(
-                                          data["harga"].toString(),
+                                          "Rp : ${data["harga"]}",
                                           style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 18.0,
-                                              ),
+                                            color: Colors.black,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                           textAlign: TextAlign.left,
+                                        ),
+                                        const SizedBox(height: 20),
+                                        Text(
+                                          "Color : ${data["warna"]} ",
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 18.0,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                        const SizedBox(height: 20),
+                                        Text(
+                                          "Size : ${data['ukuran']}",
+                                          style: const TextStyle(
+                                              fontSize: 23,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black),
                                         ),
                                         Row(
                                           mainAxisAlignment:
@@ -129,7 +155,10 @@ class Admin extends StatelessWidget {
                                                   ],
                                                 ).show();
                                               },
-                                              icon: const Icon(Icons.delete),
+                                              icon: const Icon(
+                                                Icons.delete,
+                                                size: 35,
+                                              ),
                                             ),
                                             IconButton(
                                               onPressed: () {
@@ -145,6 +174,7 @@ class Admin extends StatelessWidget {
                                               },
                                               icon: const Icon(
                                                 Icons.edit,
+                                                size: 35,
                                               ),
                                             )
                                           ],
@@ -160,7 +190,11 @@ class Admin extends StatelessWidget {
               );
             }
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+                strokeWidth: 10,
+                backgroundColor: Colors.grey,
+              ),
             );
           }),
       floatingActionButton: FloatingActionButton(
