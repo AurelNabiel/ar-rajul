@@ -6,19 +6,23 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+
+
 class Firebase_service {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Future<QuerySnapshot<Object?>> getData() async {
     CollectionReference gamis = firestore.collection("gamis");
-    CollectionReference gambarMerk = firestore.collection("merk");
+    
     return await gamis.get();
   }
+  Future<QuerySnapshot<Object?>> getData2() async{
+    CollectionReference merk = firestore.collection("merk");
+    return await merk.get();
+  }
 
-  void addProduct(String namaGamis, int harga, String gambar, String promo,
-      String ukuran, String warna, context) async {
+  void addProduct(String namaGamis, int harga, String gambar, String promo,String ukuran, String warna, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
-    
 
     try {
       await gamis.add({
@@ -170,8 +174,9 @@ class Firebase_service {
   }
 
   void filterSamase() async {
+    CollectionReference merk = firestore.collection("gamis");
     final result = await firestore
-        .collection('a')
+        .collection('merk')
         .where('namaGamis', isEqualTo: 'bekasi')
         .where('umur', isLessThan: 20)
         .where('hobi', isEqualTo: 'basket')
@@ -188,8 +193,9 @@ class Firebase_service {
   }
 
   void filterRabbani() async {
+    CollectionReference merk = firestore.collection("gamis");
     final result = await firestore
-        .collection('gamis')
+        .collection('merk')
         .where('domisili', isEqualTo: 'bekasi')
         .where('umur', isLessThan: 20)
         .where('hobi', isEqualTo: 'basket')
@@ -206,8 +212,9 @@ class Firebase_service {
   }
 
   void filterXabit() async {
+    CollectionReference merk = firestore.collection("gamis");
     final result = await firestore
-        .collection('gamis')
+        .collection('merk')
         .where('domisili', isEqualTo: 'bekasi')
         .where('umur', isLessThan: 20)
         .where('hobi', isEqualTo: 'basket')
@@ -224,8 +231,9 @@ class Firebase_service {
   }
 
   void filterHamd() async {
+    CollectionReference merk = firestore.collection("gamis");
     final result = await firestore
-        .collection('gamis')
+        .collection('merk')
         .where('domisili', isEqualTo: 'bekasi')
         .where('umur', isLessThan: 20)
         .where('hobi', isEqualTo: 'basket')
