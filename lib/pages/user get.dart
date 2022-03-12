@@ -63,15 +63,13 @@ class Userget extends StatelessWidget {
                         ),
                         child: Container(
                           height: 280,
-                          // padding: EdgeInsets.fromLTRB(20, 12, 6, 6),
                           width: 500,
                           decoration: BoxDecoration(
-                              // color: Colors.black,
-                              // border: Border.all(width: 8),
                               borderRadius: BorderRadius.circular(20),
                               image: const DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage('assets/images/123.jpg'))),
+                                  image:
+                                      AssetImage('assets/images/banner.png'))),
                         ),
                       ),
                     ),
@@ -236,8 +234,7 @@ class Userget extends StatelessWidget {
                                                       ),
                                                       SizedBox(height: 10),
                                                       Text(
-                                                        data['harga']
-                                                            .toString(),
+                                                        "Rp ${data['harga']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:
@@ -245,10 +242,19 @@ class Userget extends StatelessWidget {
                                                             color:
                                                                 Colors.black),
                                                       ),
-                                                      SizedBox(height: 40),
+                                                      SizedBox(height: 20),
                                                       Text(
-                                                        data['ukuran']
-                                                            .toString(),
+                                                        "Size : ${data['ukuran']}",
+                                                        style: const TextStyle(
+                                                            fontSize: 23,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      SizedBox(height: 20),
+                                                      Text(
+                                                        "Diskon : ${data['promo']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:

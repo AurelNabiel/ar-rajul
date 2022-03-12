@@ -20,18 +20,20 @@ class Firebase_service {
     return await merk.get();
   }
 
-  void addProduct(String namaGamis, int harga, String gambar, String promo,String ukuran, String warna, context) async {
+  void addProduct(String namaGamis, int harga, String gambar, String promo,
+      String ukuran, String warna, String merk, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
 
     try {
       await gamis.add({
-        "nama": namaGamis,
+        "namaGamis": namaGamis,
         "harga": harga,
-        "foto": gambar,
+        "merk": merk,
+        "gambar": gambar,
         "promo": promo,
-        "size": ukuran,
-        "color": warna
+        "ukuran": ukuran,
+        "warna": warna
       });
       Alert(
         context: context,
@@ -122,18 +124,19 @@ class Firebase_service {
   }
 
   void UpdateProduct(String docId, String namaGamis, int harga, String gambar,
-      String promo, String ukuran, String warna, context) async {
+      String promo, String ukuran, String warna, String merk, context) async {
     DocumentReference gamis = firestore.collection("gamis").doc(docId);
     int count = 0;
 
     try {
       await gamis.update({
-        "nama": namaGamis,
+        "namaGamis": namaGamis,
         "harga": harga,
-        "foto": gambar,
+        "merk": merk,
+        "gambar": gambar,
         "promo": promo,
-        "size": ukuran,
-        "color": warna
+        "ukuran": ukuran,
+        "warna": warna
       });
       Alert(
         context: context,
