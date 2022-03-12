@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import 'package:ar_rajul/pages/merch.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -114,13 +115,13 @@ class Userget extends StatelessWidget {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              const Admin()));
+                                                              const Merch()));
                                                 },
                                                 child: Image.network(
                                                     data['gambar'].toString()),
                                               )),
-                                          height: 90,
-                                          width: 90,
+                                          height: 200,
+                                          width: 100,
                                         ),
                                       ],
                                     );
@@ -284,7 +285,12 @@ class Userget extends StatelessWidget {
                         }
                         return Container(
                           // ignore: unnecessary_const
-                          child: const CircularProgressIndicator(),
+                          child: const CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+                            strokeWidth: 10,
+                            backgroundColor: Colors.grey,
+                          ),
                         );
                       }),
                 ),

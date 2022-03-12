@@ -7,14 +7,15 @@ class EditPage extends StatefulWidget {
   final Map data;
   final String docId;
   const EditPage({required this.data, required this.docId});
+  @override
   State<EditPage> createState() => _EditPageState();
 }
 
 class _EditPageState extends State<EditPage> {
+  TextEditingController gambar = TextEditingController();
   TextEditingController namaGamis = TextEditingController();
   TextEditingController merk = TextEditingController();
   TextEditingController harga = TextEditingController();
-  TextEditingController gambar = TextEditingController();
   TextEditingController promo = TextEditingController();
   TextEditingController ukuran = TextEditingController();
   TextEditingController warna = TextEditingController();
@@ -48,7 +49,8 @@ class _EditPageState extends State<EditPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, namaGamis, harga,merk, warna, ukuran, promo, gambar),
+                _form(context, namaGamis, harga, merk, warna, ukuran, promo,
+                    gambar),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
@@ -85,12 +87,12 @@ class _EditPageState extends State<EditPage> {
   }
 }
 
-Widget _form(
-    BuildContext context, namaGamis, harga,merk, gambar, ukuran, warna, promo) {
+Widget _form(BuildContext context, namaGamis, harga, merk, gambar, ukuran,
+    warna, promo) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _field(context, "Foto", gambar),
+      _field(context, "gambar Gamis", gambar),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
@@ -106,15 +108,15 @@ Widget _form(
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
-      _field(context, "Promo", promo),
-      SizedBox(
-        height: MediaQuery.of(context).size.height / 40,
-      ),
       _field(context, "Size", ukuran),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
       _field(context, "Color", warna),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Promo", promo),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
