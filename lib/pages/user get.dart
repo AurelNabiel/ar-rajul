@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import
 
-import 'package:ar_rajul/pages/user.dart';
+import 'package:ar_rajul/pages/merch.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -111,7 +111,7 @@ class Userget extends StatelessWidget {
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              const User()));
+                                                              const Merch()));
                                                 },
                                                 child: Image.network(
                                                     data['gambar'].toString()),
