@@ -29,7 +29,7 @@ class Admin extends StatelessWidget {
                   Map<String, dynamic> data =
                       listAllData[index].data()! as Map<String, dynamic>;
                   return Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(20),
                     child: Container(
                         height: 240,
                         decoration: BoxDecoration(
@@ -37,7 +37,7 @@ class Admin extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(25.0)),
                             color: Colors.white,
                             boxShadow: [
-                              BoxShadow(color: daws, blurRadius: 10.0),
+                              BoxShadow(color: daws, blurRadius: 3.0),
                             ]),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
