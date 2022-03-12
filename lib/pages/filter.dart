@@ -39,7 +39,7 @@ Widget build(BuildContext context) {
       ),
       body: Container(
           decoration: BoxDecoration(color: daws6),
-          padding: EdgeInsets.all(35),
+          padding: const EdgeInsets.all(35),
           child: SingleChildScrollView(
             child: Column(
               // ignore: prefer_const_literals_to_create_immutables
@@ -120,7 +120,7 @@ Widget build(BuildContext context) {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Text(data['warna'],
-                                      style: TextStyle(fontSize: 50)),
+                                      style: const TextStyle(fontSize: 50)),
                                 );
                               });
                         }
@@ -157,7 +157,7 @@ Widget build(BuildContext context) {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Text(data['ukuran'],
-                                      style: TextStyle(fontSize: 50)),
+                                      style: const TextStyle(fontSize: 50)),
                                 );
                               });
                         }

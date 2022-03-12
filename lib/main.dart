@@ -1,4 +1,7 @@
+// ignore: duplicate_ignore
 // ignore: avoid_web_libraries_in_flutter, unused_import
+
+// ignore_for_file: unused_import
 
 import 'package:ar_rajul/pages/add_product.dart';
 import 'package:ar_rajul/pages/admin.dart';
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -92,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container(
                     decoration: const BoxDecoration(
                       borderRadius:
-                          const BorderRadius.all(Radius.circular(25.0)),
+                          BorderRadius.all(Radius.circular(25.0)),
                     ),
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),

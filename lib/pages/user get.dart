@@ -308,7 +308,12 @@ class Userget extends StatelessWidget {
                         }
                         return Container(
                           // ignore: unnecessary_const
-                          child: const CircularProgressIndicator(),
+                          child: const CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+                            strokeWidth: 10,
+                            backgroundColor: Colors.grey,
+                          ),
                         );
                       }),
                 ),
