@@ -15,7 +15,6 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     final Stream<QuerySnapshot> gamis = FirebaseFirestore.instance
         .collection("gamis")
-        .where("namaGamis", isEqualTo: widget.search)
         .snapshots();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -25,7 +24,13 @@ class _SearchState extends State<Search> {
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
-              var listData = snapshot.data!.docs;
+              var listAllData = snapshot.data!.docs;
+
+              var data1 = listAllData
+                  .where((element) =>
+                      element["namaGamis"].toString().toLowerCase().contains(widget.search))
+                  .toList();
+              print(data1.length);
               return SafeArea(
                   child: SingleChildScrollView(
                 child: Padding(
@@ -48,10 +53,10 @@ class _SearchState extends State<Search> {
                         height: height,
                         width: width,
                         child: ListView.builder(
-                          itemCount: listData.length,
+                          itemCount: data1.length,
                           itemBuilder: (context, i) {
                             Map<String, dynamic> data =
-                                listData[i].data()! as Map<String, dynamic>;
+                                data1[i].data()! as Map<String, dynamic>;
                             return _data(height, width, data);
                           },
                         ),
@@ -93,19 +98,6 @@ Widget _data(height, width, data) {
                     image: NetworkImage(data["gambar"].toString()),
                     fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(20)),
-            // child: Row(
-            //   crossAxisAlignment: CrossAxisAlignment.start,
-            //   children: [
-            //     Icon(
-            //       Icons.star,
-            //       color: Colors.yellow,
-            //     ),
-            //     Text(
-            //       data["rating"].toString(),
-            //       style: TextStyle(fontSize: width / 40),
-            //     )
-            //   ],
-            // ),
           ),
           SizedBox(
             width: width / 20,
@@ -123,7 +115,7 @@ Widget _data(height, width, data) {
                 style: TextStyle(fontSize: width / 35),
               ),
               Text(
-                "${data["daerah"].toString()}, ${data["promo"].toString()}%",
+                "${data["ukuran"].toString()}, ${data["promo"].toString()}%",
                 style: TextStyle(fontSize: width / 35),
               ),
             ],
