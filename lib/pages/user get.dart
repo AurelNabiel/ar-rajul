@@ -58,11 +58,8 @@ class Userget extends StatelessWidget {
                         ),
                         child: Container(
                           height: 280,
-                          // padding: EdgeInsets.fromLTRB(20, 12, 6, 6),
                           width: 500,
                           decoration: BoxDecoration(
-                              // color: Colors.black,
-                              // border: Border.all(width: 8),
                               borderRadius: BorderRadius.circular(20),
                               image: const DecorationImage(
                                   fit: BoxFit.cover,
@@ -130,8 +127,6 @@ class Userget extends StatelessWidget {
                                   height: 80,
                                   width: 80,
                                   decoration: BoxDecoration(
-                                      // color: Colors.black,
-                                      // border: Border.all(width: 8),
                                       borderRadius: BorderRadius.circular(20),
                                       image: const DecorationImage(
                                           fit: BoxFit.cover,
@@ -150,8 +145,6 @@ class Userget extends StatelessWidget {
                                   height: 80,
                                   width: 80,
                                   decoration: BoxDecoration(
-                                      // color: Colors.black,
-                                      // border: Border.all(width: 8),
                                       borderRadius: BorderRadius.circular(20),
                                       image: const DecorationImage(
                                           fit: BoxFit.cover,
@@ -269,8 +262,7 @@ class Userget extends StatelessWidget {
                                                       ),
                                                       SizedBox(height: 10),
                                                       Text(
-                                                        data['harga']
-                                                            .toString(),
+                                                        "Rp ${data['harga']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:
@@ -280,8 +272,7 @@ class Userget extends StatelessWidget {
                                                       ),
                                                       SizedBox(height: 20),
                                                       Text(
-                                                        data['ukuran']
-                                                            .toString(),
+                                                        "Size : ${data['ukuran']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:
@@ -291,8 +282,7 @@ class Userget extends StatelessWidget {
                                                       ),
                                                       SizedBox(height: 20),
                                                       Text(
-                                                        data['promo']
-                                                            .toString(),
+                                                        "Diskon : ${data['promo']}",
                                                         style: const TextStyle(
                                                             fontSize: 23,
                                                             fontWeight:

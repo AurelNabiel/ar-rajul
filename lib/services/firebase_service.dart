@@ -15,7 +15,7 @@ class Firebase_service {
   }
 
   void addProduct(String namaGamis, int harga, String gambar, String promo,
-      String ukuran, String warna, context) async {
+      String ukuran, String warna, String merk, context) async {
     CollectionReference gamis = firestore.collection("gamis");
     int count = 0;
 
@@ -23,6 +23,7 @@ class Firebase_service {
       await gamis.add({
         "namaGamis": namaGamis,
         "harga": harga,
+        "merk": merk,
         "gambar": gambar,
         "promo": promo,
         "ukuran": ukuran,
@@ -117,7 +118,7 @@ class Firebase_service {
   }
 
   void UpdateProduct(String docId, String namaGamis, int harga, String gambar,
-      String promo, String ukuran, String warna, context) async {
+      String promo, String ukuran, String warna, String merk, context) async {
     DocumentReference gamis = firestore.collection("gamis").doc(docId);
     int count = 0;
 
@@ -125,6 +126,7 @@ class Firebase_service {
       await gamis.update({
         "namaGamis": namaGamis,
         "harga": harga,
+        "merk": merk,
         "gambar": gambar,
         "promo": promo,
         "ukuran": ukuran,

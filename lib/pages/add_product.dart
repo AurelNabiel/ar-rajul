@@ -13,6 +13,7 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   TextEditingController namaGamis = TextEditingController();
   TextEditingController harga = TextEditingController();
+  TextEditingController merk = TextEditingController();
   TextEditingController gambar = TextEditingController();
   TextEditingController promo = TextEditingController();
   TextEditingController ukuran = TextEditingController();
@@ -35,7 +36,8 @@ class _AddPageState extends State<AddPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, namaGamis, harga, ukuran, warna, promo, gambar),
+                _form(context, namaGamis, harga, merk, warna, ukuran, promo,
+                    gambar),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
@@ -45,6 +47,7 @@ class _AddPageState extends State<AddPage> {
                       Firebase_service().addProduct(
                           namaGamis.text,
                           int.parse(harga.text),
+                          merk.text,
                           gambar.text,
                           promo.text,
                           ukuran.text,
@@ -70,8 +73,8 @@ class _AddPageState extends State<AddPage> {
   }
 }
 
-Widget _form(
-    BuildContext context, namaGamis, harga, ukuran, warna, promo, gambar) {
+Widget _form(BuildContext context, namaGamis, harga, merk, ukuran, warna, promo,
+    gambar) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -84,6 +87,10 @@ Widget _form(
         height: MediaQuery.of(context).size.height / 40,
       ),
       _field(context, "Harga", harga),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Merk", merk),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),

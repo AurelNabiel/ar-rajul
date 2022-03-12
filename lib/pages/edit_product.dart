@@ -11,6 +11,7 @@ class EditPage extends StatefulWidget {
 
 class _EditPageState extends State<EditPage> {
   TextEditingController namaGamis = TextEditingController();
+  TextEditingController merk = TextEditingController();
   TextEditingController harga = TextEditingController();
   TextEditingController gambar = TextEditingController();
   TextEditingController promo = TextEditingController();
@@ -22,6 +23,7 @@ class _EditPageState extends State<EditPage> {
     gambar.text = widget.data['gambar'];
     namaGamis.text = widget.data['namaGamis'];
     harga.text = widget.data['harga'].toString();
+    merk.text = widget.data['merk'];
     ukuran.text = widget.data['ukuran'];
     warna.text = widget.data['warna'];
     promo.text = widget.data['promo'];
@@ -45,7 +47,7 @@ class _EditPageState extends State<EditPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, namaGamis, harga, warna, ukuran, promo, gambar),
+                _form(context, namaGamis, harga,merk, warna, ukuran, promo, gambar),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
@@ -56,6 +58,7 @@ class _EditPageState extends State<EditPage> {
                           widget.docId,
                           namaGamis.text,
                           int.parse(harga.text),
+                          merk.text,
                           gambar.text,
                           promo.text,
                           ukuran.text,
@@ -82,7 +85,7 @@ class _EditPageState extends State<EditPage> {
 }
 
 Widget _form(
-    BuildContext context, namaGamis, harga, gambar, ukuran, warna, promo) {
+    BuildContext context, namaGamis, harga,merk, gambar, ukuran, warna, promo) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -95,6 +98,10 @@ Widget _form(
         height: MediaQuery.of(context).size.height / 40,
       ),
       _field(context, "Harga", harga),
+      SizedBox(
+        height: MediaQuery.of(context).size.height / 40,
+      ),
+      _field(context, "Merk", merk),
       SizedBox(
         height: MediaQuery.of(context).size.height / 40,
       ),
