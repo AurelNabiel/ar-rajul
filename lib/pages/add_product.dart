@@ -113,7 +113,6 @@ class _AddPageState extends State<AddPage> {
     );
   }
 }
-
 Widget _form(BuildContext context, namaGamis, harga, merk, ukuran, warna, promo,
     gambar) {
   return Column(

@@ -170,7 +170,7 @@ class Userget extends StatelessWidget {
                                     shrinkWrap: true,
                                     gridDelegate:
                                         const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2 ,mainAxisSpacing: 230),
+                                            crossAxisCount: 2 ,mainAxisSpacing: 250),
                                     scrollDirection: Axis
                                         .vertical, // untuk membuat listview dalam bentuk vertikal
                                     itemCount: listAllData
@@ -184,7 +184,7 @@ class Userget extends StatelessWidget {
                                         
                                         Container(
                                           alignment: Alignment.center,
-                                          width: 250,
+                                          width: 200,
                                           // padding: const EdgeInsets.fromLTRB(
                                           //     20, 50, 0, 0),
                                           // child: Padding(

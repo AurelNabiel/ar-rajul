@@ -149,7 +149,11 @@ packages:
     source: hosted
     version: "4.1.1"
   firebase_storage_web:
+<<<<<<< HEAD
+    dependency: transitive
+=======
     dependency: "direct main"
+>>>>>>> fadeb51df5279849c85eeaba65c6abb216fced12
     description:
       name: firebase_storage_web
       url: "https://pub.dartlang.org"
