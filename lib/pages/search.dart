@@ -19,80 +19,79 @@ class _SearchState extends State<Search> {
         FirebaseFirestore.instance.collection("gamis").snapshots();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(
-              context, MaterialPageRoute(builder: (context) => Userget()));
-        },
-        backgroundColor: daws,
-        child: const Icon(Icons.dangerous),
-      ),
-      body: StreamBuilder<QuerySnapshot>(
-          stream: gamis,
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.connectionState == ConnectionState.active) {
-              var listAllData = snapshot.data!.docs;
+        appBar: AppBar(
+          title: const Text("Ar-Rajul"),
+          centerTitle: true,
+        ),
+        body: StreamBuilder<QuerySnapshot>(
+            stream: gamis,
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                var listAllData = snapshot.data!.docs;
 
-              var data1 = listAllData
-                  .where((element) => element["namaGamis"]    
-                      .toString()
-                      .toLowerCase()
-                      .contains(widget.search))
-                  .toList();
-
-              print(data1.length);
-              return SafeArea(
-                  child: SingleChildScrollView( 
-                child: Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Search: ${widget.search}",
-                        style: TextStyle(color: Colors.black, fontSize: 13),
-                      ),
-                      SizedBox(
-                        height: height / 60,
-                      ),
-                      SizedBox(
-                        height: height / 40,
-                      ),
-                      Container(
-                        height: height,
-                        width: width,
-                        child: ListView.builder(
-                          itemCount: data1.length,
-                          itemBuilder: (context, i) {
-                            Map<String, dynamic> data =
-                                data1[i].data()! as Map<String, dynamic>;
-                            return _data(height, width, data);
-                          },
+                var data1 = listAllData
+                    .where((element) => element["namaGamis"]
+                        .toString()
+                        .toLowerCase()
+                        .contains(widget.search))
+                    .toList();
+                print(data1.length);
+                return data1.length != 0
+                    ? SafeArea(
+                        child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(25),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Search: ${widget.search}",
+                                style: TextStyle(
+                                    fontSize: width / 13,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                height: height / 60,
+                              ),
+                              SizedBox(
+                                height: height / 40,
+                              ),
+                              Container(
+                                height: height,
+                                width: width,
+                                child: ListView.builder(
+                                  itemCount: data1.length,
+                                  itemBuilder: (context, i) {
+                                    Map<String, dynamic> data = data1[i].data()!
+                                        as Map<String, dynamic>;
+                                    return _data(height, width, data);
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                ),
-              ));
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          }),
-    );
+                      ))
+                    : const Center(child: Text("Barang tidak di temukan"));
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }));
   }
 }
 
 Widget _data(height, width, data) {
   return Container(
-    margin: EdgeInsets.only(bottom: 40),
+    margin: const EdgeInsets.only(bottom: 40),
     height: height / 5,
     width: width,
     decoration: BoxDecoration(
-        color: Color.fromARGB(255, 223, 223, 223),
+        color: const Color.fromARGB(255, 223, 223, 223),
         borderRadius: BorderRadius.circular(24)),
     child: Padding(
       padding: const EdgeInsets.all(20),
@@ -100,8 +99,8 @@ Widget _data(height, width, data) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(top: 20, left: 10),
-            margin: EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(top: 20, left: 10),
+            margin: const EdgeInsets.only(bottom: 20),
             height: height,
             width: width / 2.9,
             decoration: BoxDecoration(
@@ -126,7 +125,7 @@ Widget _data(height, width, data) {
                 style: TextStyle(fontSize: width / 35),
               ),
               Text(
-                "${data["ukuran"].toString()}, ${data["promo"].toString()}%",
+                "${data["ukuran"].toString()}, ${data["promo"].toString()}",
                 style: TextStyle(fontSize: width / 35),
               ),
             ],

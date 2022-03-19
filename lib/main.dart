@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Admin()));
+                                builder: (context) => Admin()));
                       },
                       child: const Text(
                         "Admin",
@@ -94,8 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Container(
                     decoration: const BoxDecoration(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(25.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     ),
                     margin: EdgeInsets.symmetric(
                         vertical: MediaQuery.of(context).size.height / 10),

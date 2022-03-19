@@ -31,14 +31,14 @@ class Userget extends StatelessWidget {
     const color2 = Color.fromRGBO(255, 255, 255, 1);
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => searchPage()));
-                    },
-                    backgroundColor: daws,
-                    child: Icon(Icons.search),
-                  ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => searchPage()));
+          },
+          backgroundColor: daws,
+          child: Icon(Icons.search),
+        ),
         backgroundColor: daws4,
         body: SingleChildScrollView(
           child: Column(
@@ -46,40 +46,6 @@ class Userget extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Center(
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.fromLTRB(23, 100, 10, 40),
-                  //     child: Container(
-                  //       width: 500,
-                  //       height: 70,
-                  //       decoration: BoxDecoration(
-                  //         color: daws6,
-                  //         borderRadius: BorderRadius.circular(10),
-                  //       ),
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.fromLTRB(6, 12, 6, 6),
-                  //         child: TextField(
-                  //           onSubmitted: ((value) => Navigator.push(
-                  //               context,
-                  //               MaterialPageRoute(
-                  //                   builder: (context) =>
-                  //                       Search(search: value)))),
-                  //           controller: searchController,
-                  //           decoration: const InputDecoration(
-                  //               border: InputBorder.none,
-                  //               hintText: 'Search',
-                  //               labelStyle: TextStyle(
-                  //                   color: Colors.black, fontSize: 13),
-                  //               prefixIcon: Icon(
-                  //                 Icons.search,
-                  //                 size: 40,
-                  //               )),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  
                   const SizedBox(height: 40),
                   Center(
                     child: Padding(
@@ -181,138 +147,188 @@ class Userget extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               SingleChildScrollView(
-                child: Container(
-                  height: 800,
-                  width: 1000,
-                  child: FutureBuilder<QuerySnapshot<Object?>>(
-                      future: Firebase_service().getData(), // mendapa
-                      // ignore: missing_return
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          var listAllData = snapshot.data!
-                              .docs; // untuk mengambil data dari firebase dengan menggunakan snapshot data
-                          return ListView.builder(
-                              scrollDirection: Axis
-                                  .vertical, // untuk membuat listview dalam bentuk vertikal
-                              itemCount: listAllData
-                                  .length, // untuk menghitung jumlah data yang ada
-                              itemBuilder: (context, index) {
-                                Map<String, dynamic> data = listAllData[index]
-                                    .data()! as Map<String, dynamic>; //
+                child: Wrap(
+                    alignment: WrapAlignment.center,
+                    // spacing: 10,
+                    direction: Axis.vertical,
+                    children: [
+                      
+                      Container(
+                        alignment: Alignment.topCenter,
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                        height: 3000,
+                        width: 400,
+                        child: FutureBuilder<QuerySnapshot<Object?>>(
+                            future: Firebase_service().getData(), // mendapa
+                            // ignore: missing_return
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.done) {
+                                var listAllData = snapshot.data!
+                                    .docs; // untuk mengambil data dari firebase dengan menggunakan snapshot data
+                                return GridView.builder(
+                                    shrinkWrap: true,
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2 ,mainAxisSpacing: 230),
+                                    scrollDirection: Axis
+                                        .vertical, // untuk membuat listview dalam bentuk vertikal
+                                    itemCount: listAllData
+                                        .length, // untuk menghitung jumlah data yang ada
+                                    itemBuilder: (context, index) {
+                                      Map<String, dynamic> data =
+                                          listAllData[index].data()!
+                                              as Map<String, dynamic>; //
 
-                                return Center(
-                                  child: Container(
-                                    width: 500,
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0, 70, 0, 0),
-                                      child: Card(
-                                        elevation: 10,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              10, 12, 6, 6),
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                ),
-                                                child: Container(
-                                                  height: 280,
-                                                  // padding: EdgeInsets.fromLTRB(20, 12, 6, 6),
-                                                  width: 200,
-                                                  decoration: BoxDecoration(
-                                                      // color: Colors.black,
-                                                      // border: Border.all(width: 8),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      image: DecorationImage(
-                                                          fit: BoxFit.fitHeight,
-                                                          image: NetworkImage(
-                                                              data['gambar']
-                                                                  .toString()))),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: 280,
-                                                width: 200,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                ),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.fromLTRB(
-                                                          10, 60, 6, 6),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                        data['namaGamis']
-                                                            .toString(),
-                                                        style: const TextStyle(
-                                                            fontSize: 23,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Colors.black),
+                                      return Wrap(children: [
+                                        
+                                        Container(
+                                          alignment: Alignment.center,
+                                          width: 250,
+                                          // padding: const EdgeInsets.fromLTRB(
+                                          //     20, 50, 0, 0),
+                                          // child: Padding(
+                                          //   padding: const EdgeInsets.fromLTRB(
+                                          //       0, 70, 0, 0),
+                                          child: Card(
+                                            elevation: 5,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            child: Container(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        0, 30, 0, 0),
+                                                child: Wrap(
+                                                  children: [
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
                                                       ),
-                                                      const SizedBox(
-                                                          height: 10),
-                                                      Text(
-                                                        "Rp ${data['harga']}",
-                                                        style: const TextStyle(
-                                                            fontSize: 23,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Colors.black),
+                                                      child: Container(
+                                                        height: 150,
+                                                        width: 150,
+                                                        alignment:
+                                                            Alignment.center,
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0, 30, 0, 0),
+                                                        
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                // color: Colors.black,
+                                                                // border: Border.all(width: 8),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(20),
+                                                                image: DecorationImage(
+                                                                    fit: BoxFit
+                                                                        .fitHeight,
+                                                                    image: NetworkImage(
+                                                                        data['gambar']
+                                                                            .toString()))),
                                                       ),
-                                                      SizedBox(height: 20),
-                                                      Text(
-                                                        "Size : ${data['ukuran']}",
-                                                        style: const TextStyle(
-                                                            fontSize: 23,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Colors.black),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.all(20),
+                                                      child: Card(
+                                                        color: daws4,
+                                                        child: Text(
+                                                          "${data['promo']}",
+                                                          style: const TextStyle(
+                                                              fontSize: 17,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color:
+                                                                  Colors.red),
+                                                        ),
                                                       ),
-                                                      SizedBox(height: 20),
-                                                      Text(
-                                                        "Diskon : ${data['promo']}",
-                                                        style: const TextStyle(
-                                                            fontSize: 23,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color:
-                                                                Colors.black),
+                                                    ),
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      height: 150,
+                                                      width: 200,
+                                                      decoration:
+                                                          BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
                                                       ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                0, 10, 0, 0),
+                                                        child: Column(
+                                                          children: [
+                                                            Text(
+                                                              data['namaGamis']
+                                                                  .toString(),
+                                                              style: const TextStyle(
+                                                                  fontSize:
+                                                                      17,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Colors
+                                                                      .black),
+                                                            ),
+                                                            const SizedBox(
+                                                                height: 10),
+                                                            Text(
+                                                              "Rp ${data['harga']}",
+                                                              style: const TextStyle(
+                                                                  fontSize:
+                                                                      17,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Colors
+                                                                      .black),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 20),
+                                                            Text(
+                                                              "Size : ${data['ukuran']}",
+                                                              style: const TextStyle(
+                                                                  fontSize:
+                                                                      17,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Colors
+                                                                      .black),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 20),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
                                           ),
+                                          // ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                  
-                                );
-                              });
-                        } // untuk
-                        return Container(
-                          // ignore: unnecessary_const
-                          child: const CircularProgressIndicator(),
-                        );
-                      }),
-                ),
+                                      ]);
+                                    });
+                              } // untuk
+                              return Container(
+                                // ignore: unnecessary_const
+                                child: const CircularProgressIndicator(),
+                              );
+                            }),
+                      ),
+                      
+                    ]),
               ),
             ],
           ),
