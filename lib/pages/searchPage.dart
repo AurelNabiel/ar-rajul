@@ -5,8 +5,6 @@ import 'package:ar_rajul/pages/user%20get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 class searchPage extends StatelessWidget {
   CollectionReference gamis = firestore.collection("gamis");
