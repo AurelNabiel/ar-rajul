@@ -1,5 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, non_constant_identifier_names, unused_import
 
+import 'dart:developer';
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 
@@ -11,6 +15,7 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   TextEditingController namaGamis = TextEditingController();
   TextEditingController harga = TextEditingController();
   TextEditingController merk = TextEditingController();
@@ -18,6 +23,30 @@ class _AddPageState extends State<AddPage> {
   TextEditingController promo = TextEditingController();
   TextEditingController ukuran = TextEditingController();
   TextEditingController warna = TextEditingController();
+
+  void uploadFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      String nama = result.files.first.name;
+      try {
+        await firebaseStorage.ref('image/$nama').putFile(file);
+        var dataImage =
+            await firebaseStorage.ref('image/$nama').getDownloadURL();
+        log('Berhasil Iyeyy');
+        log(dataImage);
+        setState(() {
+          gambar.text = dataImage;
+        });
+      } on FirebaseException catch (e) {
+        // e.g, e.code == 'canceled'
+        log(e.toString());
+      }
+    } else {
+      log('Batal Milih Iyeyyy');
+      // User canceled the picker
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +65,20 @@ class _AddPageState extends State<AddPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _form(context, namaGamis, harga, merk, warna, ukuran, promo,
-                    gambar),
+                ElevatedButton(
+                  onPressed: uploadFile,
+                  child: Text("Upload"),
+                ),
+                _form(
+                  context,
+                  namaGamis,
+                  harga,
+                  merk,
+                  warna,
+                  ukuran,
+                  promo,
+                  gambar,
+                ),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height / 30),
@@ -72,7 +113,6 @@ class _AddPageState extends State<AddPage> {
     );
   }
 }
-
 Widget _form(BuildContext context, namaGamis, harga, merk, ukuran, warna, promo,
     gambar) {
   return Column(
