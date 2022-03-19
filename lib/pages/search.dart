@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:ar_rajul/config.dart';
+import 'package:ar_rajul/pages/user%20get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -13,12 +15,19 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> gamis = FirebaseFirestore.instance
-        .collection("gamis")
-        .snapshots();
+    final Stream<QuerySnapshot> gamis =
+        FirebaseFirestore.instance.collection("gamis").snapshots();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(
+              context, MaterialPageRoute(builder: (context) => Userget()));
+        },
+        backgroundColor: daws,
+        child: const Icon(Icons.dangerous),
+      ),
       body: StreamBuilder<QuerySnapshot>(
           stream: gamis,
           builder:
@@ -27,12 +36,15 @@ class _SearchState extends State<Search> {
               var listAllData = snapshot.data!.docs;
 
               var data1 = listAllData
-                  .where((element) =>
-                      element["namaGamis"].toString().toLowerCase().contains(widget.search))
+                  .where((element) => element["namaGamis"]    
+                      .toString()
+                      .toLowerCase()
+                      .contains(widget.search))
                   .toList();
+
               print(data1.length);
               return SafeArea(
-                  child: SingleChildScrollView(
+                  child: SingleChildScrollView( 
                 child: Padding(
                   padding: const EdgeInsets.all(25),
                   child: Column(
@@ -40,8 +52,7 @@ class _SearchState extends State<Search> {
                     children: [
                       Text(
                         "Search: ${widget.search}",
-                        style: TextStyle(
-                            fontSize: width / 13, fontWeight: FontWeight.w700),
+                        style: TextStyle(color: Colors.black, fontSize: 13),
                       ),
                       SizedBox(
                         height: height / 60,

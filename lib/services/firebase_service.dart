@@ -5,6 +5,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+
+
 class Firebase_service {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Future<QuerySnapshot<Object?>> getData() async {
@@ -17,7 +19,11 @@ class Firebase_service {
     return await merk.get();
   }
 
-  
+  // getGamis() async {
+  //   var response = await firestore.collection('gamis');
+  //   return response.get();
+  // }
+
 
   void addProduct(String namaGamis, int harga, String merk, String gambar,
       String promo, String ukuran, String warna, context) async {

@@ -1,15 +1,16 @@
 // ignore_for_file: unused_import, sized_box_for_whitespace, avoid_unnecessary_containers
 
-import 'dart:ffi';
-
 import 'package:ar_rajul/config.dart';
 import 'package:ar_rajul/pages/search.dart';
 import 'package:ar_rajul/pages/merch.dart';
+
+import 'package:ar_rajul/pages/searchPage.dart';
 import 'package:ar_rajul/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'admin.dart';
 
@@ -18,13 +19,26 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
 class Userget extends StatelessWidget {
   List merek = [];
   List FilteredMerek = [];
-  TextEditingController searchController = TextEditingController();
   CollectionReference merk = firestore.collection("merk");
+  CollectionReference gamis = firestore.collection("gamis");
+  TextEditingController searchController = TextEditingController();
+  late QuerySnapshot snapshotData;
+  bool isExsecuted = false;
+
   @override
   Widget build(BuildContext context) {
     const color = Color.fromRGBO(222, 234, 220, 1);
     const color2 = Color.fromRGBO(255, 255, 255, 1);
+
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => searchPage()));
+                    },
+                    backgroundColor: daws,
+                    child: Icon(Icons.search),
+                  ),
         backgroundColor: daws4,
         body: SingleChildScrollView(
           child: Column(
@@ -32,39 +46,40 @@ class Userget extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(23, 100, 10, 40),
-                      child: Container(
-                        width: 500,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          color: daws6,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(6, 12, 6, 6),
-                          child: TextField(
-                            onSubmitted: ((value) => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        Search(search: value)))),
-                            controller: searchController,
-                            decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Search',
-                                labelStyle: TextStyle(
-                                    color: Colors.black, fontSize: 13),
-                                prefixIcon: Icon(
-                                  Icons.search,
-                                  size: 40,
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Center(
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.fromLTRB(23, 100, 10, 40),
+                  //     child: Container(
+                  //       width: 500,
+                  //       height: 70,
+                  //       decoration: BoxDecoration(
+                  //         color: daws6,
+                  //         borderRadius: BorderRadius.circular(10),
+                  //       ),
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.fromLTRB(6, 12, 6, 6),
+                  //         child: TextField(
+                  //           onSubmitted: ((value) => Navigator.push(
+                  //               context,
+                  //               MaterialPageRoute(
+                  //                   builder: (context) =>
+                  //                       Search(search: value)))),
+                  //           controller: searchController,
+                  //           decoration: const InputDecoration(
+                  //               border: InputBorder.none,
+                  //               hintText: 'Search',
+                  //               labelStyle: TextStyle(
+                  //                   color: Colors.black, fontSize: 13),
+                  //               prefixIcon: Icon(
+                  //                 Icons.search,
+                  //                 size: 40,
+                  //               )),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  
                   const SizedBox(height: 40),
                   Center(
                     child: Padding(
@@ -288,19 +303,13 @@ class Userget extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  // leading: Image.network(data['gambar'].toString()),
-                                  // title: Text(data['namaGamis'].toString()),
-                                  // subtitle: Text(data['harga'].toString()),
+                                  
                                 );
                               });
                         } // untuk
                         return Container(
                           // ignore: unnecessary_const
-                          child: const CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(color2),
-                            strokeWidth: 10,
-                            backgroundColor: color,
-                          ),
+                          child: const CircularProgressIndicator(),
                         );
                       }),
                 ),
@@ -309,4 +318,13 @@ class Userget extends StatelessWidget {
           ),
         ));
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<QuerySnapshot<Object?>>(
+        'snapshotData', snapshotData));
+  }
 }
+
+void setState(Null Function() param0) {}
